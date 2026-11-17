@@ -19,10 +19,10 @@ Môn học: **Thiết kế Web** · Lớp: Kỹ thuật Phần mềm / CNTT
 
 | STT | Thành viên | Vai trò | File sở hữu độc quyền (Chỉ người này commit) | Nhiệm vụ chính |
 |:---:|:---|:---|:---|:---|
-| **01** | **Thành viên 1** (Trưởng nhóm) | Team Lead & System Architect | • `index.html`<br>• `pages/dashboard.html`<br>• `js/dashboard.js`<br>• `README.md`<br>• `TASKS.md` | Khởi tạo repo, quản lý merge, làm trang Hub và trang Dashboard tổng quan tích hợp. |
-| **02** | **Thành viên 2** | Frontend Dev (HTML5 Form Specialist) | • `pages/tuition.html`<br>• `js/tuition.js` | Xây dựng Bảng kê khai học phí, form thông tin sinh viên với các Input Type `date`, `number`, form thêm môn học mới. |
-| **03** | **Thành viên 3** | UI/UX Designer (CSS3 Specialist) | • `css/style.css`<br>• `pages/scholarship.html`<br>• `js/scholarship.js` | Thiết kế Design System, Dark Mode, Thẻ Cards học bổng 3 mức (Xuất sắc 100%, Giỏi 50%, Khuyến khích 25%) theo GPA & ĐRL. |
-| **04** | **Thành viên 4** | JavaScript Developer (Logic & Events) | • `pages/calculator.html`<br>• `js/calculator.js`<br>• `prompt.log` | Lập trình tính toán công nợ, lắng nghe sự kiện `change` trên checkbox môn học để trừ học bổng realtime, modal thanh toán ví sinh viên. |
+| **01** | **Gia Long** (Trưởng nhóm) | Team Lead & System Architect | • `index.html`<br>• `pages/dashboard.html`<br>• `js/dashboard.js`<br>• `README.md`<br>• `TASKS.md` | Khởi tạo repo, quản lý merge, làm trang Hub và trang Dashboard tổng quan tích hợp. |
+| **02** | **Khắc Đạt** | Frontend Dev (HTML5 Form Specialist) | • `pages/tuition.html`<br>• `js/tuition.js` | Xây dựng Bảng kê khai học phí, form thông tin sinh viên với các Input Type `date`, `number`, form thêm môn học mới. |
+| **03** | **Thành Danh** | UI/UX Designer (CSS3 Specialist) | • `css/style.css`<br>• `pages/scholarship.html`<br>• `js/scholarship.js` | Thiết kế Design System, Dark Mode, Thẻ Cards học bổng 3 mức (Xuất sắc 100%, Giỏi 50%, Khuyến khích 25%) theo GPA & ĐRL. |
+| **04** | **Thanh Trường** | JavaScript Developer (Logic & Events) | • `pages/calculator.html`<br>• `js/calculator.js`<br>• `prompt.log` | Lập trình tính toán công nợ, lắng nghe sự kiện `change` trên checkbox môn học để trừ học bổng realtime, modal thanh toán ví sinh viên. |
 
 ---
 
