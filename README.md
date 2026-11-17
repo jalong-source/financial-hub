@@ -100,3 +100,13 @@ git push origin main
 - [x] Checkbox môn học kích hoạt sự kiện `change` cập nhật học phí lập tức.
 - [x] Phân chia file độc lập 100%, không conflict Git giữa các thành viên.
 - [x] Đầy đủ tài liệu `prompt.log`, `TASKS.md` và hướng dẫn chạy kiểm tra tại chỗ.
+
+---
+
+## 6. HỆ THỐNG TÀI LIỆU KỸ THUẬT (PROJECT DOCUMENTATION)
+Toàn bộ tài liệu đặc tả và quy chuẩn dự án được lưu trữ tập trung trong thư mục `docs/`:
+- 📄 **[docs/PRD.md](docs/PRD.md):** Bản đặc tả yêu cầu sản phẩm, tiêu chuẩn 3 mức học bổng và mô phỏng ví điện tử.
+- 📐 **[docs/LOGIC.md](docs/LOGIC.md):** Đặc tả kiến trúc module JavaScript, giải thuật tính toán và luồng dữ liệu thời gian thực.
+- 📜 **[docs/AI_RULES.md](docs/AI_RULES.md):** Quy chuẩn coding Vanilla JS/CSS3, quy định quản trị Git và quy trình phối hợp nhóm.
+- 📋 **[TASKS.md](TASKS.md):** Bảng theo dõi tiến độ công việc và nghiệm thu 100% đồ án.
+- 🪵 **[prompt.log](prompt.log):** Nhật ký Prompt Engineering đồ án chi tiết qua từng giai đoạn.

@@ -35,6 +35,9 @@
               <div class="hub-header__wallet-label">Ví Sinh Viên (Giả Lập)</div>
               <div class="hub-header__wallet-value" id="wallet-header-balance">5.500.000 VNĐ</div>
             </div>
+            <button type="button" class="hub-header__wallet-deposit-btn" id="btn-open-deposit-modal" title="Nạp thêm tiền vào ví">
+              + Nạp tiền
+            </button>
           </div>
         </div>
 
@@ -71,12 +74,12 @@
             <form class="declaration-form" id="tuition-declaration-form" onsubmit="return false;">
               <div class="declaration-form__group">
                 <label class="declaration-form__label" for="student-code">Mã số sinh viên (MSSV):</label>
-                <input type="text" id="student-code" class="declaration-form__input" value="125001054" readonly>
+                <input type="text" id="student-code" class="declaration-form__input" value="125001054" placeholder="VD: 125001054">
               </div>
 
               <div class="declaration-form__group">
                 <label class="declaration-form__label" for="student-fullname">Họ và tên sinh viên:</label>
-                <input type="text" id="student-fullname" class="declaration-form__input" value="Nguyễn Hữu Thanh Trường" readonly>
+                <input type="text" id="student-fullname" class="declaration-form__input" value="Nguyễn Hữu Thanh Trường" placeholder="VD: Nguyễn Hữu Thanh Trường">
               </div>
 
               <div class="declaration-form__group">
@@ -218,7 +221,7 @@
         <div class="wallet-modal__bill">
           <div class="wallet-modal__bill-row">
             <span>Sinh viên:</span>
-            <strong>Nguyễn Hữu Thanh Trường (125001054)</strong>
+            <strong id="modal-student-info">Nguyễn Hữu Thanh Trường (125001054)</strong>
           </div>
           <div class="wallet-modal__bill-row">
             <span>Số dư ví hiện tại:</span>
@@ -237,6 +240,47 @@
         <div class="wallet-modal__actions">
           <button type="button" class="wallet-modal__btn-cancel" id="btn-close-modal">Hủy bỏ</button>
           <button type="button" class="wallet-modal__btn-confirm" id="btn-confirm-payment">Xác Nhận Trừ Ví</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MODAL NẠP TIỀN VÍ SINH VIÊN ═══ -->
+    <div class="wallet-modal-backdrop" id="wallet-deposit-modal" role="dialog" aria-modal="true" aria-labelledby="deposit-modal-headline">
+      <div class="wallet-modal">
+        <h4 class="wallet-modal__title" id="deposit-modal-headline">💰 Nạp Tiền Vào Ví Sinh Viên</h4>
+        <p class="wallet-modal__desc">Nhập số tiền hoặc chọn nhanh các mệnh giá bên dưới để nạp trực tiếp vào ví giả lập.</p>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--color-text-dim); margin-bottom: 6px;" for="deposit-amount-input">
+            Số tiền nạp (VNĐ):
+          </label>
+          <input 
+            type="number" 
+            id="deposit-amount-input" 
+            class="declaration-form__input" 
+            placeholder="Nhập số tiền muốn nạp..." 
+            min="10000" 
+            step="10000"
+            style="font-size: 1.1rem; font-weight: 700; color: var(--color-lime); width: 100%;"
+          >
+        </div>
+
+        <!-- Chips chọn nhanh mệnh giá -->
+        <div style="margin-bottom: 22px;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-dim); margin-bottom: 8px; font-family: var(--font-family-mono); letter-spacing: 0.5px;">
+            Chọn nhanh mệnh giá:
+          </div>
+          <div class="deposit-chips" style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="deposit-chip-btn" data-amount="500000">+500.000đ</button>
+            <button type="button" class="deposit-chip-btn" data-amount="1000000">+1.000.000đ</button>
+            <button type="button" class="deposit-chip-btn" data-amount="2000000">+2.000.000đ</button>
+            <button type="button" class="deposit-chip-btn" data-amount="5000000">+5.000.000đ</button>
+          </div>
+        </div>
+
+        <div class="wallet-modal__actions">
+          <button type="button" class="wallet-modal__btn-cancel" id="btn-close-deposit-modal">Hủy bỏ</button>
+          <button type="button" class="wallet-modal__btn-confirm" id="btn-confirm-deposit">Xác Nhận Nạp Tiền</button>
         </div>
       </div>
     </div>

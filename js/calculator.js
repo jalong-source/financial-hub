@@ -339,8 +339,11 @@ function setupWalletModal() {
         return;
       }
 
+      // Lưu lại số tiền thực tế thanh toán trước khi reset về 0
+      const paidAmount = currentCalculatedDebt;
+
       // Trừ tiền ví
-      const newWalletBalance = currentWallet - currentCalculatedDebt;
+      const newWalletBalance = currentWallet - paidAmount;
       setWalletBalance(newWalletBalance);
 
       // Đánh dấu đã thanh toán thành công
@@ -348,7 +351,7 @@ function setupWalletModal() {
       calculateTuition();
 
       modal.classList.remove('open');
-      showToast(`✅ Đã thanh toán thành công ${formatVND(currentCalculatedDebt)} qua Ví sinh viên!`);
+      showToast(`✅ Đã thanh toán thành công ${formatVND(paidAmount)} qua Ví sinh viên!`);
     });
   }
 }

@@ -292,17 +292,41 @@ function setupEventListeners() {
     });
   }
 
-  // 4. Modal Ví điện tử sinh viên
+  // 4. Modal Ví điện tử sinh viên - Thanh toán học phí
   const modal = document.getElementById('wallet-payment-modal');
   const btnOpenModal = document.getElementById('btn-open-payment-modal');
   const btnCloseModal = document.getElementById('btn-close-modal');
   const btnConfirmPay = document.getElementById('btn-confirm-payment');
+
+  // Lắng nghe chỉnh sửa thông tin sinh viên và lưu vào localStorage
+  const studentCodeInput = document.getElementById('student-code');
+  const studentNameInput = document.getElementById('student-fullname');
+
+  if (studentCodeInput) {
+    studentCodeInput.addEventListener('input', () => {
+      localStorage.setItem('fh_student_code', studentCodeInput.value.trim());
+    });
+  }
+
+  if (studentNameInput) {
+    studentNameInput.addEventListener('input', () => {
+      localStorage.setItem('fh_student_name', studentNameInput.value.trim());
+    });
+  }
 
   if (btnOpenModal && modal) {
     btnOpenModal.addEventListener('click', () => {
       if (currentDebtAmount <= 0) {
         displayToast('🎉 Bạn hiện không có công nợ học phí cần thanh toán (Công nợ: 0 VNĐ)!');
         return;
+      }
+
+      // Đồng bộ thông tin sinh viên mới nhất vào Modal
+      const studentName = (document.getElementById('student-fullname')?.value || 'Nguyễn Hữu Thanh Trường').trim();
+      const studentCode = (document.getElementById('student-code')?.value || '125001054').trim();
+      const modalStudentInfo = document.getElementById('modal-student-info');
+      if (modalStudentInfo) {
+        modalStudentInfo.textContent = `${studentName} (${studentCode})`;
       }
 
       const wallet = readWalletBalance();
@@ -341,13 +365,74 @@ function setupEventListeners() {
         return;
       }
 
-      const newBalance = wallet - currentDebtAmount;
+      // Lưu lại số tiền thực tế cần thanh toán trước khi reset về 0
+      const paidAmount = currentDebtAmount;
+      const newBalance = wallet - paidAmount;
       saveWalletBalance(newBalance);
       isTuitionSettled = true;
 
       refreshFinancialSummary();
       modal.classList.remove('is-open');
-      displayToast(`✅ Thanh toán thành công ${formatVND(currentDebtAmount)} qua Ví sinh viên!`);
+      displayToast(`✅ Thanh toán thành công ${formatVND(paidAmount)} qua Ví sinh viên!`);
+    });
+  }
+
+  // 5. Modal Nạp tiền nhanh vào Ví Sinh Viên
+  const depositModal = document.getElementById('wallet-deposit-modal');
+  const btnOpenDeposit = document.getElementById('btn-open-deposit-modal');
+  const btnCloseDeposit = document.getElementById('btn-close-deposit-modal');
+  const btnConfirmDeposit = document.getElementById('btn-confirm-deposit');
+  const depositInput = document.getElementById('deposit-amount-input');
+  const depositChips = document.querySelectorAll('.deposit-chip-btn');
+
+  if (btnOpenDeposit && depositModal) {
+    btnOpenDeposit.addEventListener('click', () => {
+      if (depositInput) depositInput.value = '';
+      depositModal.classList.add('is-open');
+      setTimeout(() => depositInput?.focus(), 150);
+    });
+  }
+
+  if (btnCloseDeposit && depositModal) {
+    btnCloseDeposit.addEventListener('click', () => {
+      depositModal.classList.remove('is-open');
+    });
+  }
+
+  if (depositModal) {
+    depositModal.addEventListener('click', (e) => {
+      if (e.target === depositModal) depositModal.classList.remove('is-open');
+    });
+  }
+
+  // Chọn nhanh các mệnh giá (chips) - cộng dồn số tiền
+  depositChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const addAmount = parseInt(chip.dataset.amount, 10) || 0;
+      const currentVal = parseInt(depositInput.value, 10) || 0;
+      depositInput.value = currentVal + addAmount;
+      triggerPulse(depositInput);
+    });
+  });
+
+  // Xác nhận nạp tiền vào ví
+  if (btnConfirmDeposit && depositModal) {
+    btnConfirmDeposit.addEventListener('click', () => {
+      const amount = parseInt(depositInput.value, 10);
+      if (!amount || isNaN(amount) || amount < 10000) {
+        displayToast('⚠️ Số tiền nạp tối thiểu là 10.000 VNĐ!', true);
+        return;
+      }
+
+      const currentBalance = readWalletBalance();
+      const updatedBalance = currentBalance + amount;
+      saveWalletBalance(updatedBalance);
+
+      const elHeaderBalance = document.getElementById('wallet-header-balance');
+      if (elHeaderBalance) triggerPulse(elHeaderBalance);
+
+      depositModal.classList.remove('is-open');
+      displayToast(`🎉 Nạp thành công ${formatVND(amount)} vào Ví Sinh Viên!`);
     });
   }
 }
@@ -356,6 +441,15 @@ function setupEventListeners() {
  * Khởi chạy toàn bộ hệ thống
  */
 function initFinancialHubApp() {
+  // Khôi phục thông tin sinh viên từ localStorage nếu đã lưu trước đó
+  const savedCode = localStorage.getItem('fh_student_code');
+  const savedName = localStorage.getItem('fh_student_name');
+  const codeEl = document.getElementById('student-code');
+  const nameEl = document.getElementById('student-fullname');
+
+  if (savedCode && codeEl) codeEl.value = savedCode;
+  if (savedName && nameEl) nameEl.value = savedName;
+
   renderCoursesTable();
   renderScholarshipCards();
   refreshWalletUI();

@@ -114,3 +114,46 @@ Vai trò: Senior UI/UX Designer & Frontend Architect
 - Dọn sạch pages/calculator.html: Chuyển toàn bộ 645 dòng CSS inline sang css/style.css.
 - Kiểm tra toàn bộ đường dẫn tương đối (href/src) và cấu hình GitHub Actions deploy.yml, đảm bảo 0 link chết và deploy mượt mà trên GitHub Pages.
 ================================================================================
+
+================================================================================
+NHẬT KÝ KỸ THUẬT: BỔ SUNG TÍNH NĂNG CHỈNH SỬA THÔNG TIN & NẠP TIỀN VÍ SINH VIÊN
+Thời gian: 2026-11-17
+Người thực hiện: Thành viên 1 (Nhóm trưởng) & Thành viên 4 (Frontend/JS)
+
+1. MỤC TIÊU:
+- Bổ sung khả năng tùy biến thông tin sinh viên (MSSV, Họ tên) linh hoạt trên cổng chính index.html.
+- Đồng bộ thông tin sinh viên tức thì vào Modal xác nhận thanh toán học phí và lưu vào localStorage.
+- Thêm tính năng Nạp tiền nhanh vào Ví Sinh Viên với giao diện Modal trực quan, chips chọn nhanh mệnh giá và hiệu ứng số dư real-time.
+
+2. CÁC THAY ĐỔI CHI TIẾT:
+- index.html:
+  + Gỡ bỏ thuộc tính readonly tại #student-code và #student-fullname.
+  + Thêm nút "+ Nạp tiền" tại .hub-header__wallet.
+  + Thêm Modal nạp tiền (#wallet-deposit-modal) kèm các chips mệnh giá (+500k, +1M, +2M, +5M).
+  + Gán id #modal-student-info để cập nhật động tên và MSSV trong Modal thanh toán.
+- css/style.css:
+  + Thêm định kiểu chuẩn Fintech Neon cho .hub-header__wallet-deposit-btn và .deposit-chip-btn.
+- js/main.js:
+  + Lưu và khôi phục MSSV/Họ tên qua localStorage ('fh_student_code', 'fh_student_name').
+  + Tự động cập nhật tên sinh viên mới nhất vào Modal thanh toán khi mở.
+  + Xử lý logic nạp tiền: cộng dồn mệnh giá từ chips, nạp tối thiểu 10.000 VNĐ, lưu localStorage, kích hoạt hiệu ứng triggerPulse và hiển thị Toast chúc mừng.
+================================================================================
+
+================================================================================
+NHẬT KÝ KỸ THUẬT: SỬA LỖI TOAST 0 VNĐ & GỘP TÀI LIỆU MARKDOWN VÀO DOCS/
+Thời gian: 2026-11-17
+Người thực hiện: Thành viên 1 (Nhóm trưởng) & Thành viên 4 (Frontend/JS)
+
+1. MỤC TIÊU:
+- Sửa lỗi logic khi thanh toán học phí hiển thị "Thanh toán thành công 0 VNĐ" trong Toast.
+- Dọn dẹp các file tài liệu .md bị trùng lặp ở root repository và thư mục cha, quy hoạch toàn bộ đặc tả vào thư mục FinancialHub/docs/.
+
+2. CÁC THAY ĐỔI CHI TIẾT:
+- js/main.js & js/calculator.js:
+  + Lưu biến tạm `paidAmount` ghi nhận số tiền thực tế trước khi reset công nợ về 0.
+  + Truyền `formatVND(paidAmount)` vào Toast để thông báo chính xác số tiền vừa trừ ví.
+- Dọn dẹp tài liệu:
+  + Cập nhật docs/AI_RULES.md kết hợp đầy đủ quy tắc commit Tiếng Việt và phối hợp Git từ antigravity.md.
+  + Xóa các file .md trùng lặp tại FinancialHub/ (PRD.md, LOGIC.md, AI_RULES.md) và ngoài thư mục cha.
+  + Cập nhật README.md bổ sung mục 6 liên kết trực tiếp tới docs/PRD.md, docs/LOGIC.md, docs/AI_RULES.md.
+================================================================================
