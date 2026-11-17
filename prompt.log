@@ -1,0 +1,62 @@
+================================================================================
+AI PROMPT LOG & TECHNICAL SPECIFICATION - FINANCIAL HUB
+PHÂN HỆ: TRA CỨU HỌC PHÍ & HỌC BỔNG · DỰ ÁN CUỐI KỲ THIẾT KẾ WEB
+THÀNH VIÊN 4: NGUYỄN HỮU THANH TRƯỜNG (MSSV: 125001054)
+Nhánh Git: feature/NguyenHuuThanhTruong
+================================================================================
+
+1. BẢNG PHÂN CHIA TRÁCH NHIỆM & TẬP TIN ĐỘC LẬP
+--------------------------------------------------------------------------------
+- Thành viên 1: index.html, pages/dashboard.html, js/dashboard.js, README.md, TASKS.md
+- Thành viên 2: pages/tuition.html, js/tuition.js
+- Thành viên 3: css/style.css, pages/scholarship.html, js/scholarship.js
+- Thành viên 4: pages/calculator.html, js/calculator.js, prompt.log [HOÀN THÀNH]
+
+2. MỤC TIÊU KỸ THUẬT CỦA THÀNH VIÊN 4
+--------------------------------------------------------------------------------
+- Xây dựng giao diện pages/calculator.html chuẩn Dark Theme (#101513, #84d9bb, #c5ee75).
+- Bắt sự kiện 'change' trên checkbox môn học (.subject-checkbox và #select-all).
+- Lắng nghe 'input' và 'change' trên input GPA và ĐRL để cập nhật thời gian thực.
+- Tự động đối soát 3 mức học bổng PRD:
+  + Xuất sắc (Giảm 100%): GPA >= 3.80 & ĐRL >= 90
+  + Giỏi (Giảm 50%): GPA >= 3.60 & ĐRL >= 85
+  + Khuyến khích (Giảm 25%): GPA >= 3.20 & ĐRL >= 80
+  + Không đạt: GPA < 3.20 hoặc ĐRL < 80
+- Kích hoạt class .active trên thẻ CSS3 Cards tương ứng.
+- Tính toán công nợ:
+  Công nợ còn lại = Tổng học phí môn học - Số tiền miễn giảm
+- Format tiền tệ VNĐ chuẩn Quốc tế bằng Intl.NumberFormat('vi-VN').
+- Tích hợp Modal thanh toán qua Ví điện tử sinh viên, trừ số dư ví và lưu LocalStorage.
+
+3. NHẬT KÝ PROMPT ENGINEERING (4 VÒNG TƯƠNG TÁC AI)
+--------------------------------------------------------------------------------
+[VÒNG 1: THIẾT KẾ CẤU TRÚC GIAO DIỆN HTML5 DARK THEME]
+- Prompt: "Tạo trang pages/calculator.html với đầy đủ semantic HTML5, kế thừa Design Token Dark Theme (#101513, #84d9bb, #c5ee75), có thanh điều hướng breadcrumb về index.html, badge thông tin sinh viên Nguyễn Hữu Thanh Trường 125001054, input GPA & ĐRL, lưới thẻ cards học bổng, bảng môn học checkbox và sidebar quyết toán công nợ."
+- Output: File pages/calculator.html hoàn chỉnh, tích hợp thẻ cards CSS3, bảng học phần linh hoạt và modal ví điện tử.
+
+[VÒNG 2: XÂY DỰNG HÀM TÍNH TOÁN & ĐỐI SOÁT HỌC BỔNG REALTIME]
+- Prompt: "Viết hàm evaluateScholarship(gpa, drl) dựa trên 3 mức học bổng PRD. Viết hàm updateScholarshipCards(activeTierId) kích hoạt viền phát sáng và badge 'Đang áp dụng' trên thẻ card đạt chuẩn."
+- Output: Module kiểm tra học bổng chính xác, hỗ trợ cả dấu phẩy thập phân và click vào card để áp dụng điểm mẫu.
+
+[VÒNG 3: BẮT SỰ KIỆN CHANGE & TÍNH CÔNG NỢ THỜI GIAN THỰC]
+- Prompt: "Gắn listener 'change' trên các checkbox môn học, duyệt qua các checkbox được tick để lấy dataset.price và dataset.credits, tính tổng tiền học phí và công nợ sau giảm trừ. Cập nhật DOM ngay lập tức với animation pulseValue."
+- Output: Hiệu ứng nhảy số mượt mà, định dạng VNĐ chuẩn '2.100.000 ₫', hỗ trợ chọn tất cả và indeterminate state.
+
+[VÒNG 4: TÍCH HỢP MODAL THANH TOÁN QUA VÍ SINH VIÊN]
+- Prompt: "Xây dựng hệ thống ví sinh viên lưu trong LocalStorage (mặc định 5.500.000 ₫). Khi click nút 'Thanh toán qua Ví sinh viên', mở modal hiển thị số dư hiện tại, số tiền trừ và số dư sau thanh toán. Khi xác nhận, kiểm tra số dư, trừ tiền ví, đưa công nợ về 0 ₫ và hiện Toast notification thành công."
+- Output: Hoàn thiện luồng thanh toán ví trọn vẹn, không phát sinh lỗi ngoại lệ.
+
+4. KỊCH BẢN KIỂM THỬ (TEST MATRIX)
+--------------------------------------------------------------------------------
+| STT | GPA  | ĐRL | Môn học chọn | Học bổng | Học phí gốc  | Giảm trừ     | Công nợ còn lại |
+|:---:|:----:|:---:|:-------------|:--------:|:------------:|:------------:|:---------------:|
+| 1   | 3.85 | 92  | 3 môn (10 TC)| Xuất sắc | 7.000.000 ₫  | 7.000.000 ₫  | 0 ₫ (Miễn 100%) |
+| 2   | 3.65 | 86  | 3 môn (10 TC)| Giỏi     | 7.000.000 ₫  | 3.500.000 ₫  | 3.500.000 ₫     |
+| 3   | 3.25 | 82  | 3 môn (10 TC)| K.Khích  | 7.000.000 ₫  | 1.750.000 ₫  | 5.250.000 ₫     |
+| 4   | 2.75 | 75  | 3 môn (10 TC)| Không đạt| 7.000.000 ₫  | 0 ₫          | 7.000.000 ₫     |
+| 5   | 3.65 | 86  | Thanh toán ví| Giỏi     | Trừ ví 3.5M  | Ví còn 2.0M  | 0 ₫ (Đã trả)    |
+
+5. KẾT LUẬN & SẴN SÀNG MERGE VÀO MAIN
+--------------------------------------------------------------------------------
+Toàn bộ mã nguồn của Thành viên 4 hoạt động độc lập, không xâm phạm mã nguồn của các thành viên khác, tuân thủ 100% quy định Git của giảng viên.
+================================================================================
