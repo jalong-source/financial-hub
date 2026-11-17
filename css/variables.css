@@ -1,0 +1,61 @@
+/* ============================================================
+   Financial Hub — Design Tokens (CSS Custom Properties)
+   Khai báo tập trung: màu sắc, font chữ, shadow, spacing
+   ============================================================ */
+
+:root {
+  /* ── Surface Palette ─────────────────────────────────────── */
+  --bg-primary:       #0a0e17;
+  --bg-secondary:     #111827;
+  --bg-card:          #1a1f2e;
+  --bg-card-hover:    #232a3b;
+  --bg-input:         #0f1420;
+
+  /* ── Text Palette ────────────────────────────────────────── */
+  --text-primary:     #e8edf5;
+  --text-secondary:   #94a3b8;
+  --text-muted:       #64748b;
+  --text-inverse:     #0a0e17;
+
+  /* ── Accent / Neon Palette ───────────────────────────────── */
+  --neon-cyan:        #00f0ff;
+  --neon-purple:      #a855f7;
+  --neon-pink:        #f472b6;
+  --neon-green:       #34d399;
+  --neon-gold:        #fbbf24;
+  --neon-orange:      #fb923c;
+  --neon-red:         #f87171;
+
+  /* ── Functional Colors ───────────────────────────────────── */
+  --accent:           var(--neon-cyan);
+  --success:          var(--neon-green);
+  --warning:          var(--neon-gold);
+  --danger:           var(--neon-red);
+
+  /* ── Borders & Shadows ───────────────────────────────────── */
+  --border-color:     rgba(148, 163, 184, .12);
+  --border-radius-sm: 8px;
+  --border-radius:    14px;
+  --border-radius-lg: 20px;
+  --shadow-soft:      0 4px 24px rgba(0, 0, 0, .35);
+  --shadow-neon:      0 0 12px var(--accent), 0 0 36px rgba(0, 240, 255, .15);
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-sans:    'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-heading: 'Poppins', var(--font-sans);
+
+  /* ── Spacing Scale ───────────────────────────────────────── */
+  --space-xs:  .25rem;
+  --space-sm:  .5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* ── Transitions ─────────────────────────────────────────── */
+  --transition-fast: 150ms cubic-bezier(.4,0,.2,1);
+  --transition-base: 280ms cubic-bezier(.4,0,.2,1);
+  --transition-slow: 450ms cubic-bezier(.4,0,.2,1);
+}

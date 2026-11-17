@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Học Bổng Theo GPA — Financial Hub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheets (đúng thứ tự: reset → variables → style) -->
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="container">
+      <a href="../index.html" class="logo text-gradient">💰 Financial Hub</a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">Trang chủ</a></li>
+          <li><a href="scholarship.html" class="active">Học bổng</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Main Content ────────────────────────────────────────── -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <h1 class="text-gradient">🎓 Tra Cứu Học Bổng</h1>
+        <p class="subtitle">
+          Nhập điểm GPA của bạn để xác định mức học bổng tương ứng.
+          Hệ thống sẽ tự động đánh dấu thẻ phù hợp.
+        </p>
+      </section>
+
+      <!-- GPA Input -->
+      <section class="gpa-input-section">
+        <div class="gpa-input-wrapper">
+          <label for="gpaInput" class="form-label">Nhập GPA (0.00 – 4.00)</label>
+          <input
+            type="number"
+            id="gpaInput"
+            class="gpa-input"
+            placeholder="3.50"
+            min="0"
+            max="4"
+            step="0.01"
+            autocomplete="off"
+          />
+        </div>
+        <p id="gpaResult" class="gpa-result" aria-live="polite"></p>
+      </section>
+
+      <!-- Scholarship Cards Grid -->
+      <section class="scholarship-grid" id="scholarshipGrid" aria-label="Các mức học bổng">
+
+        <!-- Card 1 — Xuất sắc -->
+        <article class="scholarship-card card--gold" data-min-gpa="3.60" data-level="Xuất sắc">
+          <div class="card-icon">🏆</div>
+          <h3 class="card-title">Xuất sắc</h3>
+          <p class="card-percentage">100%</p>
+          <p class="card-condition">GPA ≥ <span>3.60</span></p>
+        </article>
+
+        <!-- Card 2 — Giỏi -->
+        <article class="scholarship-card card--cyan" data-min-gpa="3.20" data-level="Giỏi">
+          <div class="card-icon">🥇</div>
+          <h3 class="card-title">Giỏi</h3>
+          <p class="card-percentage">75%</p>
+          <p class="card-condition">GPA ≥ <span>3.20</span></p>
+        </article>
+
+        <!-- Card 3 — Khá -->
+        <article class="scholarship-card card--purple" data-min-gpa="2.50" data-level="Khá">
+          <div class="card-icon">🥈</div>
+          <h3 class="card-title">Khá</h3>
+          <p class="card-percentage">50%</p>
+          <p class="card-condition">GPA ≥ <span>2.50</span></p>
+        </article>
+
+        <!-- Card 4 — Khuyến khích -->
+        <article class="scholarship-card card--green" data-min-gpa="2.00" data-level="Khuyến khích">
+          <div class="card-icon">🎖️</div>
+          <h3 class="card-title">Khuyến khích</h3>
+          <p class="card-percentage">25%</p>
+          <p class="card-condition">GPA ≥ <span>2.00</span></p>
+        </article>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Financial Hub — Dark Mode Design System</p>
+    </div>
+  </footer>
+
+  <!-- Scripts (đúng thứ tự: data → logic → main) -->
+  <script src="../js/data.js"></script>
+  <script src="../js/logic.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
