@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Financial Hub | Tra cứu Học phí & Học bổng</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <!-- ═══ HEADER & STUDENT INFO (PRD KHU VỰC 1) ═══ -->
+      <header class="masthead">
+        <div class="brand">
+          <span class="logo-text">💰 Student Financial Hub</span>
+          <span class="course-label">ĐỀ TÀI CUỐI KỲ · NHÓM 4 THÀNH VIÊN</span>
+        </div>
+        <div class="user-badge" id="hub-student-badge">
+          <span class="badge-avatar">🎓</span>
+          <div class="badge-info">
+            <strong id="hub-student-name">Nguyễn Văn A</strong>
+            <small id="hub-student-meta">MSSV: 2024001234 · CNTT · HK1 2026-2027</small>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ HERO / INTRO SECTION ═══ -->
+      <section class="intro">
+        <p class="eyebrow">HỌC PHẦN THIẾT KẾ WEB · KỸ THUẬT PHẦN MỀM</p>
+        <h1>Tra cứu Học phí <span>&</span><br>Học bổng Sinh viên.</h1>
+        <p class="lede">Hệ thống quản lý tài chính sinh viên thông minh — Kê khai học phần theo thời gian thực, tự động xét duyệt học bổng dựa trên GPA và Điểm rèn luyện, tính toán công nợ và mô phỏng thanh toán ví điện tử.</p>
+      </section>
+
+      <!-- ═══ WALLET & COMING SOON BANNER (PRD TẦM NHÌN MỞ RỘNG) ═══ -->
+      <section class="wallet-banner">
+        <div class="wallet-info">
+          <span class="wallet-icon">💳</span>
+          <div>
+            <div class="wallet-label">VÍ ĐIỆN TỬ SINH VIÊN (GIẢ LẬP)</div>
+            <div class="wallet-balance" id="hub-wallet-balance">5.500.000 VNĐ</div>
+          </div>
+        </div>
+        <div class="wallet-actions">
+          <button type="button" class="btn-wallet-action" id="btn-mock-apply">📄 Nộp hồ sơ xét duyệt tự động (Coming Soon)</button>
+        </div>
+      </section>
+
+      <!-- ═══ 4 NAVIGATION CARDS ═══ -->
+      <section class="hub-grid" aria-label="Các phân hệ chức năng">
+
+        <a class="hub-card" href="pages/tuition.html">
+          <span class="hub-icon">📋</span>
+          <strong>Khu vực 1: Bảng Kê Khai Học Phí</strong>
+          <small>Sử dụng các HTML5 Input types (number, date) để kê khai học phần và thêm môn học mới giả lập.</small>
+          <span class="hub-tag">HTML5 · FORM & INPUT TYPES</span>
+        </a>
+
+        <a class="hub-card" href="pages/scholarship.html">
+          <span class="hub-icon">🏆</span>
+          <strong>Khu vực 2: Tra Cứu Học Bổng</strong>
+          <small>Xét duyệt 3 mức học bổng (Xuất sắc 100%, Giỏi 50%, Khuyến khích 25%) dựa trên GPA và Điểm rèn luyện.</small>
+          <span class="hub-tag">CSS3 · CARDS LAYOUT & ACTIVE STATES</span>
+        </a>
+
+        <a class="hub-card" href="pages/calculator.html">
+          <span class="hub-icon">🧮</span>
+          <strong>Khu vực 3: Bảng Tính Công Nợ Realtime</strong>
+          <small>Bắt sự kiện 'change' trên checkbox môn học để tính học phí gốc, trừ học bổng và thanh toán ví sinh viên.</small>
+          <span class="hub-tag">JAVASCRIPT · REALTIME EVENTS & DEBT</span>
+        </a>
+
+        <a class="hub-card" href="pages/dashboard.html">
+          <span class="hub-icon">📊</span>
+          <strong>Hệ Thống: Dashboard Tổng Quan</strong>
+          <small>Tích hợp toàn diện hồ sơ sinh viên, học phí, học bổng và công nợ trên một màn hình quản trị thống nhất.</small>
+          <span class="hub-tag">FULL INTEGRATION · UNIFIED WORKSPACE</span>
+        </a>
+
+      </section>
+
+      <!-- ═══ TEAM ROLES & INDEPENDENT FILES (GIẢNG VIÊN CHECKLIST) ═══ -->
+      <section class="lesson-section" aria-labelledby="team-title">
+        <div class="section-heading">
+          <h2 id="team-title">Bảng phân công độc quyền 4 thành viên (Tuân thủ quy chế Git)</h2>
+          <span>TEAM COMMIT LOG</span>
+        </div>
+        <div class="lesson-list" aria-label="Danh sách thành viên">
+          <div class="lesson-link">
+            <span class="lesson-number">01</span>
+            <span class="lesson-copy">
+              <strong>Thành viên 1 — Team Lead & System Architect</strong>
+              <small>index.html · pages/dashboard.html · js/dashboard.js · README.md · TASKS.md</small>
+            </span>
+            <span class="lesson-arrow">👤</span>
+          </div>
+          <div class="lesson-link">
+            <span class="lesson-number">02</span>
+            <span class="lesson-copy">
+              <strong>Thành viên 2 — Frontend Dev (HTML5 Form Specialist)</strong>
+              <small>pages/tuition.html · js/tuition.js · Bảng kê khai & Form thêm môn học</small>
+            </span>
+            <span class="lesson-arrow">👤</span>
+          </div>
+          <div class="lesson-link">
+            <span class="lesson-number">03</span>
+            <span class="lesson-copy">
+              <strong>Thành viên 3 — UI/UX Designer (CSS3 Specialist)</strong>
+              <small>css/style.css · pages/scholarship.html · js/scholarship.js · Thẻ Cards học bổng 3 mức</small>
+            </span>
+            <span class="lesson-arrow">👤</span>
+          </div>
+          <div class="lesson-link">
+            <span class="lesson-number">04</span>
+            <span class="lesson-copy">
+              <strong>Thành viên 4 — JavaScript Developer (Logic & Events)</strong>
+              <small>pages/calculator.html · js/calculator.js · prompt.log · Logic công nợ & Ví điện tử</small>
+            </span>
+            <span class="lesson-arrow">👤</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>STUDENT FINANCIAL HUB — Phân hệ Tra cứu Học phí & Học bổng © 2026</span>
+        <a href="TASKS.md">Tiến độ TASKS.md ↗</a>
+      </footer>
+    </main>
+
+    <script>
+      // Script nhỏ mô phỏng nút Coming soon trên Landing page
+      document.getElementById('btn-mock-apply').addEventListener('click', () => {
+        alert('ℹ️ Tính năng "Nộp hồ sơ xét duyệt tự động" đang được phát triển theo lộ trình mở rộng của phân hệ!');
+      });
+    </script>
+  </body>
+</html>
