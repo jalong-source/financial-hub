@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Tra Cứu Học Bổng | Financial Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ═══ HEADER & ĐIỀU HƯỚNG ═══ -->
+      <nav class="site-nav" aria-label="Điều hướng phân hệ">
+        <div class="brand">
+          <a href="../index.html" class="logo-text">💰 Financial Hub</a>
+          <span class="course-label">KHU VỰC 2: TRA CỨU HỌC BỔNG</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="tuition.html" class="nav-link">Kê khai học phí</a></li>
+          <li><a href="scholarship.html" class="nav-link active" aria-current="page">Tra cứu học bổng</a></li>
+          <li><a href="calculator.html" class="nav-link">Tính công nợ realtime</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- ═══ TIÊU ĐỀ KHU VỰC ═══ -->
+      <header class="intro">
+        <p class="eyebrow">CSS3 CARDS & ACTIVE GLOW STATES</p>
+        <h1>Xét Duyệt & Tra Cứu Học Bổng Sinh Viên</h1>
+        <p class="lede">Giao diện dạng thẻ Cards hiển thị 3 cấp độ học bổng. Khi nhập điểm GPA và Điểm Rèn Luyện (ĐRL), hệ thống tự động kiểm tra điều kiện và kích hoạt hiệu ứng viền phát sáng neon cho mức học bổng tương ứng.</p>
+      </header>
+
+      <!-- ═══ BẢNG ĐIỀU KHIỂN NHẬP ĐIỂM (GPA & ĐRL) ═══ -->
+      <section class="form-card" aria-labelledby="input-scores-title">
+        <header class="form-header">
+          <h2 id="input-scores-title" class="form-title">
+            <span>🎯</span> Nhập Điểm Học Tập & Điểm Rèn Luyện (Giả Lập)
+          </h2>
+          <p class="form-desc">Điều chỉnh điểm số bên dưới để xem sự thay đổi trạng thái của các Thẻ Học Bổng.</p>
+        </header>
+
+        <form id="score-simulator-form" class="form-grid">
+          <div class="form-group">
+            <label for="input-gpa" class="form-label required">Điểm trung bình tích lũy (GPA thang 4.0):</label>
+            <input type="number" id="input-gpa" class="form-control mono" value="3.65" min="0" max="4.0" step="0.01" required>
+            <small class="form-desc">Thang điểm 4.0 (Ví dụ: 3.85, 3.65, 3.25)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="input-drl" class="form-label required">Điểm rèn luyện sinh viên (ĐRL thang 100):</label>
+            <input type="number" id="input-drl" class="form-control mono" value="88" min="0" max="100" step="1" required>
+            <small class="form-desc">Thang điểm 100 (Ví dụ: 92, 88, 82)</small>
+          </div>
+
+          <div class="form-group" style="align-self: flex-end;">
+            <button type="button" id="btn-quick-max" class="btn btn-outline" style="width: 100%;">
+              ⭐ Thử mức Xuất sắc (GPA 3.9 / ĐRL 95)
+            </button>
+          </div>
+        </form>
+
+        <div id="evaluation-result-box" style="margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(132, 217, 187, 0.08); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);">
+          <strong id="eval-title" style="color: var(--lime-accent);">Kết quả đánh giá hiện tại:</strong>
+          <span id="eval-message" style="color: var(--text-main); margin-left: 0.5rem;">Đạt Học bổng Giỏi (Giảm 50% học phí).</span>
+        </div>
+      </section>
+
+      <!-- ═══ 3 THẺ CARDS HỌC BỔNG (CSS3 CARDS WITH NEON GLOW) ═══ -->
+      <section class="scholarship-section" aria-labelledby="cards-section-title">
+        <h2 id="cards-section-title" class="visually-hidden">Danh sách các mức học bổng</h2>
+
+        <div class="scholarship-grid" id="scholarship-cards-container">
+
+          <!-- THẺ 1: HỌC BỔNG XUẤT SẮC (GIẢM 100%) -->
+          <article class="scholarship-card card-excellence" id="card-excellence">
+            <span class="card-badge-status locked" id="badge-excellence">Chưa đạt</span>
+            <div class="card-medal">🥇</div>
+            <h3 class="card-title">Học Bổng Xuất Sắc</h3>
+            <div class="card-discount">MIỄN 100%</div>
+
+            <ul class="card-criteria">
+              <li class="criteria-item" id="crit-exc-gpa">
+                <span class="criteria-icon" aria-hidden="true">●</span>
+                <span>Điểm GPA ≥ <strong>3.80 / 4.0</strong></span>
+              </li>
+              <li class="criteria-item" id="crit-exc-drl">
+                <span class="criteria-icon" aria-hidden="true">●</span>
+                <span>Điểm Rèn Luyện (ĐRL) ≥ <strong>90 / 100</strong></span>
+              </li>
+              <li class="criteria-item">
+                <span class="criteria-icon criteria-met" aria-hidden="true">✔</span>
+                <span>Không có môn học dưới điểm C</span>
+              </li>
+            </ul>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: auto;">
+              Dành cho sinh viên có thành tích học tập và phong trào rèn luyện nổi bật nhất toàn khóa.
+            </p>
+          </article>
+
+          <!-- THẺ 2: HỌC BỔNG GIỎI (GIẢM 50%) -->
+          <article class="scholarship-card card-verygood active" id="card-verygood">
+            <span class="card-badge-status achieved" id="badge-verygood">ĐANG ĐẠT</span>
+            <div class="card-medal">🥈</div>
+            <h3 class="card-title">Học Bổng Giỏi</h3>
+            <div class="card-discount">GIẢM 50%</div>
+
+            <ul class="card-criteria">
+              <li class="criteria-item criteria-met" id="crit-vg-gpa">
+                <span class="criteria-icon" aria-hidden="true">✔</span>
+                <span>Điểm GPA ≥ <strong>3.60 / 4.0</strong></span>
+              </li>
+              <li class="criteria-item criteria-met" id="crit-vg-drl">
+                <span class="criteria-icon" aria-hidden="true">✔</span>
+                <span>Điểm Rèn Luyện (ĐRL) ≥ <strong>85 / 100</strong></span>
+              </li>
+              <li class="criteria-item">
+                <span class="criteria-icon criteria-met" aria-hidden="true">✔</span>
+                <span>Không vi phạm quy chế thi cử</span>
+              </li>
+            </ul>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: auto;">
+              Mức hỗ trợ 50% học phí cho các học phần đăng ký chính quy trong học kỳ.
+            </p>
+          </article>
+
+          <!-- THẺ 3: HỌC BỔNG KHUYẾN KHÍCH (GIẢM 25%) -->
+          <article class="scholarship-card card-good" id="card-good">
+            <span class="card-badge-status locked" id="badge-good">Chưa đạt</span>
+            <div class="card-medal">⭐</div>
+            <h3 class="card-title">Học Bổng Khuyến Khích</h3>
+            <div class="card-discount">GIẢM 25%</div>
+
+            <ul class="card-criteria">
+              <li class="criteria-item" id="crit-good-gpa">
+                <span class="criteria-icon" aria-hidden="true">●</span>
+                <span>Điểm GPA ≥ <strong>3.20 / 4.0</strong></span>
+              </li>
+              <li class="criteria-item" id="crit-good-drl">
+                <span class="criteria-icon" aria-hidden="true">●</span>
+                <span>Điểm Rèn Luyện (ĐRL) ≥ <strong>80 / 100</strong></span>
+              </li>
+              <li class="criteria-item">
+                <span class="criteria-icon criteria-met" aria-hidden="true">✔</span>
+                <span>Số tín chỉ đăng ký ≥ 12 tín chỉ</span>
+              </li>
+            </ul>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: auto;">
+              Khuyến khích sinh viên duy trì tinh thần phấn đấu trong học tập và hoạt động đoàn thể.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>Phân hệ Tra cứu Học phí & Học bổng © 2026</span>
+        <a href="calculator.html">Chuyển sang Khu vực 3: Bảng Tính Công Nợ Realtime →</a>
+      </footer>
+    </div>
+
+    <!-- Script tương tác thẻ học bổng -->
+    <script src="../js/scholarship.js" defer></script>
+  </body>
+</html>

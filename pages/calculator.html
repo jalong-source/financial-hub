@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Bảng Tính Công Nợ Realtime | Financial Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ═══ HEADER & ĐIỀU HƯỚNG ═══ -->
+      <nav class="site-nav" aria-label="Điều hướng phân hệ">
+        <div class="brand">
+          <a href="../index.html" class="logo-text">💰 Financial Hub</a>
+          <span class="course-label">KHU VỰC 3: TÍNH CÔNG NỢ REALTIME</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="tuition.html" class="nav-link">Kê khai học phí</a></li>
+          <li><a href="scholarship.html" class="nav-link">Tra cứu học bổng</a></li>
+          <li><a href="calculator.html" class="nav-link active" aria-current="page">Tính công nợ realtime</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- ═══ TIÊU ĐỀ KHU VỰC ═══ -->
+      <header class="intro">
+        <p class="eyebrow">JAVASCRIPT LOGIC & REALTIME EVENTS</p>
+        <h1>Tính Toán Công Nợ Học Phí Thời Gian Thực</h1>
+        <p class="lede">Hệ thống bắt sự kiện <code>change</code> trên từng checkbox môn học để tính tổng học phí gốc, tự động áp dụng tỷ lệ miễn giảm theo mức học bổng và hiển thị ngay số tiền công nợ cần nộp.</p>
+      </header>
+
+      <!-- ═══ BẢNG TỔNG KẾT CÔNG NỢ NỔI BẬT (REALTIME DASH) ═══ -->
+      <section class="calc-summary-panel" aria-label="Bảng tổng hợp công nợ">
+        <div class="calc-box">
+          <span class="calc-label">Tổng học phí gốc (A)</span>
+          <span class="calc-value mono" id="calc-gross-tuition">5.400.000 ₫</span>
+          <small class="form-desc" id="calc-credits-count">12 tín chỉ đã chọn</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Mức học bổng áp dụng</span>
+          <span class="calc-value discount mono" id="calc-scholarship-rate">-50%</span>
+          <small class="form-desc" id="calc-scholarship-name">Học bổng Giỏi (GPA 3.65)</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Số tiền được miễn giảm (B)</span>
+          <span class="calc-value discount mono" id="calc-discount-amount">2.700.000 ₫</span>
+          <small class="form-desc">Trừ trực tiếp vào học phí</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Công nợ cần đóng ngay (A - B)</span>
+          <span class="calc-value debt mono" id="calc-final-debt">2.700.000 ₫</span>
+          <small class="form-desc" style="color: var(--lime-accent);">Đã bao gồm chiết khấu học bổng</small>
+        </div>
+      </section>
+
+      <!-- ═══ CẤU HÌNH HỌC BỔNG ĐƯỢC ÁP DỤNG ═══ -->
+      <section class="form-card" aria-labelledby="scholarship-config-title">
+        <header class="form-header">
+          <h2 id="scholarship-config-title" class="form-title">
+            <span>⚙️</span> Cấu Hình Mức Học Bổng Trừ Vào Học Phí
+          </h2>
+          <p class="form-desc">Chọn nhanh mức học bổng hoặc nhập điểm GPA/ĐRL để hệ thống tự động suy ra tỷ lệ khấu trừ.</p>
+        </header>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="select-scholarship-level" class="form-label">Chọn mức học bổng:</label>
+            <select id="select-scholarship-level" class="form-control">
+              <option value="1.0">Học bổng Xuất sắc (Miễn 100% học phí)</option>
+              <option value="0.5" selected>Học bổng Giỏi (Giảm 50% học phí)</option>
+              <option value="0.25">Học bổng Khuyến khích (Giảm 25% học phí)</option>
+              <option value="0.0">Không áp dụng học bổng (0%)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="calc-gpa-input" class="form-label">Hoặc nhập GPA tự động tính:</label>
+            <input type="number" id="calc-gpa-input" class="form-control mono" value="3.65" min="0" max="4.0" step="0.01">
+          </div>
+
+          <div class="form-group">
+            <label for="calc-drl-input" class="form-label">Nhập ĐRL tự động tính:</label>
+            <input type="number" id="calc-drl-input" class="form-control mono" value="88" min="0" max="100" step="1">
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ BẢNG CHECKBOX MÔN HỌC BẮT SỰ KIỆN CHANGE REALTIME ═══ -->
+      <section class="form-card" aria-labelledby="courses-check-title">
+        <header class="form-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 id="courses-check-title" class="form-title">
+              <span>☑️</span> Danh Sách Môn Học Kê Khai (Lắng nghe sự kiện Change)
+            </h2>
+            <p class="form-desc">Tick hoặc bỏ tick vào checkbox của từng môn học để thấy số tiền công nợ cập nhật ngay lập tức.</p>
+          </div>
+          <div>
+            <button type="button" id="btn-toggle-all" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">
+              Bỏ chọn tất cả
+            </button>
+          </div>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table" id="calc-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50px;">Tick</th>
+                <th scope="col">Mã học phần</th>
+                <th scope="col">Tên môn học</th>
+                <th scope="col" class="mono">Số tín chỉ</th>
+                <th scope="col" class="mono">Học phí gốc</th>
+                <th scope="col" class="mono">Trạng thái kê khai</th>
+              </tr>
+            </thead>
+            <tbody id="calc-tbody">
+              <!-- Môn 1 -->
+              <tr class="calc-row" data-credits="3" data-fee="1350000">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-checkbox" checked data-credits="3" data-fee="1350000" aria-label="Chọn Thiết kế Web">
+                  </label>
+                </td>
+                <td class="mono">INT3101</td>
+                <td><strong>Thiết kế & Lập trình Web</strong></td>
+                <td class="mono">3 TC</td>
+                <td class="mono">1.350.000 ₫</td>
+                <td><span style="color: var(--lime-accent);">Đã đăng ký</span></td>
+              </tr>
+
+              <!-- Môn 2 -->
+              <tr class="calc-row" data-credits="4" data-fee="1800000">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-checkbox" checked data-credits="4" data-fee="1800000" aria-label="Chọn Cơ sở dữ liệu">
+                  </label>
+                </td>
+                <td class="mono">INT3102</td>
+                <td><strong>Cơ sở dữ liệu nâng cao</strong></td>
+                <td class="mono">4 TC</td>
+                <td class="mono">1.800.000 ₫</td>
+                <td><span style="color: var(--lime-accent);">Đã đăng ký</span></td>
+              </tr>
+
+              <!-- Môn 3 -->
+              <tr class="calc-row" data-credits="3" data-fee="1350000">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-checkbox" checked data-credits="3" data-fee="1350000" aria-label="Chọn Cấu trúc dữ liệu">
+                  </label>
+                </td>
+                <td class="mono">INT3103</td>
+                <td><strong>Cấu trúc dữ liệu & Giải thuật</strong></td>
+                <td class="mono">3 TC</td>
+                <td class="mono">1.350.000 ₫</td>
+                <td><span style="color: var(--lime-accent);">Đã đăng ký</span></td>
+              </tr>
+
+              <!-- Môn 4 -->
+              <tr class="calc-row" data-credits="2" data-fee="900000">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-checkbox" checked data-credits="2" data-fee="900000" aria-label="Chọn Kỹ năng mềm">
+                  </label>
+                </td>
+                <td class="mono">INT3104</td>
+                <td><strong>Kỹ năng giao tiếp & Thuyết trình</strong></td>
+                <td class="mono">2 TC</td>
+                <td class="mono">900.000 ₫</td>
+                <td><span style="color: var(--lime-accent);">Đã đăng ký</span></td>
+              </tr>
+
+              <!-- Môn 5 -->
+              <tr class="calc-row" data-credits="3" data-fee="1350000">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-checkbox" data-credits="3" data-fee="1350000" aria-label="Chọn Mạng máy tính">
+                  </label>
+                </td>
+                <td class="mono">INT3105</td>
+                <td><strong>Mạng máy tính căn bản</strong></td>
+                <td class="mono">3 TC</td>
+                <td class="mono">1.350.000 ₫</td>
+                <td><span style="color: var(--text-muted);">Môn tự chọn</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ KHU VỰC THANH TOÁN VÍ SINH VIÊN (PRD TẦM NHÌN DÀI HẠN) ═══ -->
+      <section class="wallet-banner">
+        <div class="wallet-info">
+          <span class="wallet-icon">💳</span>
+          <div>
+            <div class="wallet-label">VÍ ĐIỆN TỬ SINH VIÊN</div>
+            <div class="wallet-balance" id="calc-wallet-balance">5.500.000 VNĐ</div>
+            <small style="color: var(--text-muted);">Số dư khả dụng để trừ công nợ trực tuyến</small>
+          </div>
+        </div>
+        <div class="wallet-actions">
+          <button type="button" class="btn btn-lime" id="btn-open-pay-modal">
+            ⚡ Thanh Toán Ngay Bằng Ví Sinh Viên
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══ MODAL XÁC NHẬN THANH TOÁN VÍ ĐIỆN TỬ ═══ -->
+      <div class="modal-overlay" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="modal-pay-title">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="modal-pay-title" style="font-size: 1.25rem; font-weight: 800; color: var(--lime-accent);">
+              Xác Nhận Thanh Toán Học Phí
+            </h3>
+            <button type="button" class="btn-close-modal" id="btn-close-pay-modal" aria-label="Đóng">&times;</button>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Giao dịch trừ tiền tự động từ Ví sinh viên để hoàn tất công nợ học kỳ:</p>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">Số tiền công nợ:</span>
+                <strong class="mono" id="modal-debt-amount" style="color: var(--danger);">2.700.000 ₫</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="color: var(--text-muted);">Số dư ví hiện tại:</span>
+                <strong class="mono" id="modal-current-balance">5.500.000 ₫</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-subtle); padding-top: 0.5rem;">
+                <span style="color: var(--text-muted);">Số dư ví sau khi thanh toán:</span>
+                <strong class="mono" id="modal-after-balance" style="color: var(--lime-accent);">2.800.000 ₫</strong>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem;">
+            <button type="button" class="btn btn-outline" id="btn-cancel-pay" style="flex: 1;">Hủy bỏ</button>
+            <button type="button" class="btn btn-lime" id="btn-confirm-pay" style="flex: 1;">Xác Nhận Trừ Ví</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <span>Phân hệ Tra cứu Học phí & Học bổng © 2026</span>
+        <a href="dashboard.html">Xem Dashboard Tổng Quan Tích Hợp →</a>
+      </footer>
+    </div>
+
+    <!-- Script tính công nợ realtime -->
+    <script src="../js/calculator.js" defer></script>
+  </body>
+</html>

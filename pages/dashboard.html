@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Dashboard Quản Trị Tài Chính Sinh Viên | Financial Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ═══ HEADER & ĐIỀU HƯỚNG ═══ -->
+      <nav class="site-nav" aria-label="Điều hướng phân hệ">
+        <div class="brand">
+          <a href="../index.html" class="logo-text">💰 Financial Hub</a>
+          <span class="course-label">DASHBOARD TỔNG QUAN TÍCH HỢP</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="tuition.html" class="nav-link">Kê khai học phí</a></li>
+          <li><a href="scholarship.html" class="nav-link">Tra cứu học bổng</a></li>
+          <li><a href="calculator.html" class="nav-link">Tính công nợ realtime</a></li>
+          <li><a href="dashboard.html" class="nav-link active" aria-current="page">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- ═══ USER BADGE / PROFILE SUMMARY ═══ -->
+      <header class="masthead">
+        <div class="brand">
+          <h1 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">
+            Bảng Điều Khiển Tài Chính Sinh Viên
+          </h1>
+          <span class="course-label">ĐỒ ÁN TỐT NGHIỆP / CUỐI KỲ · HỌC PHẦN THIẾT KẾ WEB</span>
+        </div>
+        <div class="user-badge">
+          <span class="badge-avatar">🎓</span>
+          <div class="badge-info">
+            <strong>Trần Khắc Đạt (MSSV: 2024005678)</strong>
+            <small>Khoa CNTT & Kỹ thuật Phần mềm · Khóa 2024</small>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ CÁC THẺ METRIC TỔNG HỢP ═══ -->
+      <section class="calc-summary-panel" aria-label="Chỉ số thống kê">
+        <div class="calc-box">
+          <span class="calc-label">Tín chỉ tích lũy HK1</span>
+          <span class="calc-value mono highlight" id="db-credits">12 TC</span>
+          <small class="form-desc">4 môn học chính quy</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Điểm GPA / ĐRL</span>
+          <span class="calc-value mono" id="db-scores">3.65 / 88</span>
+          <small class="form-desc" style="color: var(--lime-accent);">Đạt chuẩn Học bổng Giỏi</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Mức học bổng đạt được</span>
+          <span class="calc-value discount mono" id="db-scholarship">-50%</span>
+          <small class="form-desc">Miễn giảm 2.700.000 ₫</small>
+        </div>
+
+        <div class="calc-box">
+          <span class="calc-label">Công nợ học phí hiện tại</span>
+          <span class="calc-value debt mono" id="db-debt">2.700.000 ₫</span>
+          <small class="form-desc">Hạn nộp: 15/12/2026</small>
+        </div>
+      </section>
+
+      <!-- ═══ LƯỚI 2 CỘT TÍCH HỢP ═══ -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        
+        <!-- Cột 1: Trạng thái học phí & ví điện tử -->
+        <section class="form-card">
+          <header class="form-header">
+            <h2 class="form-title"><span>💳</span> Ví Điện Tử & Thanh Toán Nhanh</h2>
+            <p class="form-desc">Liên kết ví sinh viên và quét mã thanh toán học phí trực tuyến.</p>
+          </header>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span style="color: var(--text-muted); font-size: 0.85rem;">SỐ DƯ VÍ KHẢ DỤNG:</span>
+              <strong class="mono" style="font-size: 1.35rem; color: var(--lime-accent);">5.500.000 ₫</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Được bảo chứng bởi Ngân hàng liên kết đào tạo sinh viên. Miễn 100% phí giao dịch khi nộp học phí.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 1rem;">
+            <a href="calculator.html" class="btn btn-lime" style="flex: 1; text-align: center;">Đến bảng tính & nộp phí</a>
+            <a href="tuition.html" class="btn btn-outline" style="flex: 1; text-align: center;">Xem biểu phí</a>
+          </div>
+        </section>
+
+        <!-- Cột 2: Trạng thái xét duyệt hồ sơ học bổng -->
+        <section class="form-card">
+          <header class="form-header">
+            <h2 class="form-title"><span>🏆</span> Tiến Độ Xét Duyệt Học Bổng</h2>
+            <p class="form-desc">Cơ chế tự động đối soát điều kiện GPA và Điểm rèn luyện.</p>
+          </header>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <span style="font-size: 1.5rem;">🥇</span>
+              <div style="flex-grow: 1;">
+                <strong>Học bổng Xuất sắc (100%)</strong>
+                <small style="display: block; color: var(--text-dim);">Cần GPA ≥ 3.80 & ĐRL ≥ 90 (Chưa đạt)</small>
+              </div>
+              <span class="card-badge-status locked" style="position: static;">Thiếu 0.15 GPA</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: rgba(197, 238, 117, 0.08); border-radius: var(--radius-sm); border: 1px solid var(--lime-accent);">
+              <span style="font-size: 1.5rem;">🥈</span>
+              <div style="flex-grow: 1;">
+                <strong style="color: var(--lime-accent);">Học bổng Giỏi (50%)</strong>
+                <small style="display: block; color: var(--text-muted);">GPA: 3.65 / ĐRL: 88 (Thỏa mãn)</small>
+              </div>
+              <span class="card-badge-status achieved" style="position: static;">ĐÃ ĐẠT</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <span style="font-size: 1.5rem;">⭐</span>
+              <div style="flex-grow: 1;">
+                <strong>Học bổng Khuyến khích (25%)</strong>
+                <small style="display: block; color: var(--text-dim);">Đã vượt qua mức này</small>
+              </div>
+              <span class="card-badge-status achieved" style="position: static; background: var(--mint-primary); color: var(--bg-base);">ĐẠT</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="site-footer">
+        <span>Phân hệ Tra cứu Học phí & Học bổng © 2026</span>
+        <a href="../index.html">← Quay lại Cổng điều hướng chính</a>
+      </footer>
+    </div>
+
+    <script src="../js/dashboard.js" defer></script>
+  </body>
+</html>

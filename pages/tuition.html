@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Bảng Kê Khai Học Phí | Financial Hub</title>
+    
+    <!-- Google Fonts: Manrope & DM Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS liên kết từ thư mục css/style.css -->
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <div class="shell">
+      <!-- ═══ HEADER & ĐIỀU HƯỚNG CON ═══ -->
+      <nav class="site-nav" aria-label="Điều hướng phân hệ">
+        <div class="brand">
+          <a href="../index.html" class="logo-text">💰 Financial Hub</a>
+          <span class="course-label">KHU VỰC 1: BẢNG KÊ KHAI HỌC PHÍ</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+          <li><a href="tuition.html" class="nav-link active" aria-current="page">Kê khai học phí</a></li>
+          <li><a href="scholarship.html" class="nav-link">Tra cứu học bổng</a></li>
+          <li><a href="calculator.html" class="nav-link">Tính công nợ realtime</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- ═══ TIÊU ĐỀ KHU VỰC ═══ -->
+      <header class="intro">
+        <p class="eyebrow">HTML5 FORM & INPUT TYPES SPECIALIST</p>
+        <h1>Bảng Kê Khai Học Phí & Học Phần</h1>
+        <p class="lede">Kê khai biểu phí tín chỉ sinh viên, quản lý hạn nộp bằng các định dạng Input chuẩn HTML5 (number, date, checkbox) và giả lập đăng ký môn học mới.</p>
+      </header>
+
+      <!-- ═══ FORM 1: THIẾT LẬP THÔNG TIN SINH VIÊN & BIỂU PHÍ ═══ -->
+      <section class="form-card" aria-labelledby="form-info-title">
+        <header class="form-header">
+          <h2 id="form-info-title" class="form-title">
+            <span>👤</span> Thông Tin Sinh Viên & Thiết Lập Biểu Phí
+          </h2>
+          <p class="form-desc">Sử dụng các kiểu dữ liệu Input Type: `text`, `number`, `date` với các ràng buộc dữ liệu chặt chẽ.</p>
+        </header>
+
+        <form id="student-settings-form" class="form-grid">
+          <div class="form-group">
+            <label for="student-name" class="form-label required">Họ và tên sinh viên:</label>
+            <input type="text" id="student-name" class="form-control" value="Trần Khắc Đạt" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="student-id" class="form-label required">Mã số sinh viên (MSSV):</label>
+            <input type="text" id="student-id" class="form-control mono" value="2024005678" required pattern="[0-9]{8,10}">
+          </div>
+
+          <div class="form-group">
+            <label for="tuition-rate" class="form-label required">Đơn giá 1 tín chỉ (VNĐ):</label>
+            <input type="number" id="tuition-rate" class="form-control mono" value="450000" min="100000" max="2000000" step="10000" required>
+            <small class="form-desc">Input type="number" (min: 100k, step: 10k)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="extra-fee" class="form-label required">Phụ phí cơ sở vật chất (VNĐ):</label>
+            <input type="number" id="extra-fee" class="form-control mono" value="350000" min="0" max="5000000" step="50000" required>
+            <small class="form-desc">Input type="number" cho phụ phí</small>
+          </div>
+
+          <div class="form-group">
+            <label for="payment-deadline" class="form-label required">Hạn chót nộp học phí:</label>
+            <input type="date" id="payment-deadline" class="form-control mono" value="2026-12-15" required>
+            <small class="form-desc">Input type="date" chọn lịch nộp tiền</small>
+          </div>
+
+          <div class="form-group">
+            <label for="semester-select" class="form-label required">Học kỳ kê khai:</label>
+            <select id="semester-select" class="form-control" required>
+              <option value="hk1-2026-2027" selected>Học kỳ 1 (Năm học 2026 - 2027)</option>
+              <option value="hk2-2026-2027">Học kỳ 2 (Năm học 2026 - 2027)</option>
+              <option value="hk-he-2027">Học kỳ Hè (2027)</option>
+            </select>
+          </div>
+        </form>
+      </section>
+
+      <!-- ═══ BẢNG MÔN HỌC & CHECKBOX DATA-CREDITS ═══ -->
+      <section class="form-card" aria-labelledby="table-title">
+        <header class="form-header">
+          <h2 id="table-title" class="form-title">
+            <span>📋</span> Bảng Kê Khai Danh Sách Học Phần
+          </h2>
+          <p class="form-desc">Từng môn học có checkbox chứa thuộc tính <code>data-credits</code> để phục vụ tính toán tự động.</p>
+        </header>
+
+        <div class="table-container">
+          <table class="data-table" id="tuition-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 50px;">Chọn</th>
+                <th scope="col">Mã môn</th>
+                <th scope="col">Tên học phần</th>
+                <th scope="col" class="mono">Số TC</th>
+                <th scope="col" class="mono">Đơn giá / TC</th>
+                <th scope="col" class="mono">Hạn nộp</th>
+                <th scope="col" class="mono">Thành tiền (VNĐ)</th>
+              </tr>
+            </thead>
+            <tbody id="tuition-tbody">
+              <!-- Môn 1 -->
+              <tr class="course-row" data-course-id="INT3101" data-credits="3">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-check" checked data-credits="3" aria-label="Chọn Thiết kế Web">
+                  </label>
+                </td>
+                <td class="mono">INT3101</td>
+                <td><strong>Thiết kế & Lập trình Web</strong></td>
+                <td class="mono credit-count">3</td>
+                <td class="mono item-rate">450.000 ₫</td>
+                <td class="mono">
+                  <input type="date" class="form-control mono inline-date" value="2026-12-15" aria-label="Hạn nộp Thiết kế Web">
+                </td>
+                <td class="mono row-subtotal">1.350.000 ₫</td>
+              </tr>
+
+              <!-- Môn 2 -->
+              <tr class="course-row" data-course-id="INT3102" data-credits="4">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-check" checked data-credits="4" aria-label="Chọn Lập trình Cơ sở dữ liệu">
+                  </label>
+                </td>
+                <td class="mono">INT3102</td>
+                <td><strong>Cơ sở dữ liệu nâng cao</strong></td>
+                <td class="mono credit-count">4</td>
+                <td class="mono item-rate">450.000 ₫</td>
+                <td class="mono">
+                  <input type="date" class="form-control mono inline-date" value="2026-12-15" aria-label="Hạn nộp Cơ sở dữ liệu">
+                </td>
+                <td class="mono row-subtotal">1.800.000 ₫</td>
+              </tr>
+
+              <!-- Môn 3 -->
+              <tr class="course-row" data-course-id="INT3103" data-credits="3">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-check" checked data-credits="3" aria-label="Chọn Cấu trúc Dữ liệu">
+                  </label>
+                </td>
+                <td class="mono">INT3103</td>
+                <td><strong>Cấu trúc dữ liệu & Giải thuật</strong></td>
+                <td class="mono credit-count">3</td>
+                <td class="mono item-rate">450.000 ₫</td>
+                <td class="mono">
+                  <input type="date" class="form-control mono inline-date" value="2026-12-15" aria-label="Hạn nộp Cấu trúc dữ liệu">
+                </td>
+                <td class="mono row-subtotal">1.350.000 ₫</td>
+              </tr>
+
+              <!-- Môn 4 -->
+              <tr class="course-row" data-course-id="INT3104" data-credits="2">
+                <td>
+                  <label class="custom-check">
+                    <input type="checkbox" class="course-check" checked data-credits="2" aria-label="Chọn Kỹ năng mềm">
+                  </label>
+                </td>
+                <td class="mono">INT3104</td>
+                <td><strong>Kỹ năng giao tiếp & Thuyết trình</strong></td>
+                <td class="mono credit-count">2</td>
+                <td class="mono item-rate">450.000 ₫</td>
+                <td class="mono">
+                  <input type="date" class="form-control mono inline-date" value="2026-12-15" aria-label="Hạn nộp Kỹ năng mềm">
+                </td>
+                <td class="mono row-subtotal">900.000 ₫</td>
+              </tr>
+            </tbody>
+
+            <!-- TFOOT TÍNH TOÁN TỰ ĐỘNG -->
+            <tfoot>
+              <tr>
+                <th colspan="3">Tổng số tín chỉ đăng ký:</th>
+                <td colspan="4" id="total-credits-display" class="mono">12 Tín chỉ</td>
+              </tr>
+              <tr>
+                <th colspan="3">Tạm tính học phí các môn học:</th>
+                <td colspan="4" id="subtotal-tuition-display" class="mono">5.400.000 ₫</td>
+              </tr>
+              <tr>
+                <th colspan="3">Phụ phí cơ sở vật chất & thẻ SV:</th>
+                <td colspan="4" id="extra-fee-display" class="mono">350.000 ₫</td>
+              </tr>
+              <tr class="highlight-row">
+                <th colspan="3">TỔNG HỌC PHÍ KÊ KHAI (CHƯA TRỪ HỌC BỔNG):</th>
+                <td colspan="4" id="grand-total-display" class="mono">5.750.000 ₫</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ FORM 2: THÊM MÔN HỌC MỚI ĐỘNG (DYNAMIC MOCK FORM) ═══ -->
+      <section class="form-card" aria-labelledby="add-course-title">
+        <header class="form-header">
+          <h2 id="add-course-title" class="form-title">
+            <span>➕</span> Giả Lập Thêm Môn Học Mới Vào Bảng Kê Khai
+          </h2>
+          <p class="form-desc">Nhập thông tin môn học bổ sung để thêm trực tiếp dòng mới vào bảng `table`.</p>
+        </header>
+
+        <form id="add-course-form" class="form-grid">
+          <div class="form-group">
+            <label for="new-course-code" class="form-label required">Mã môn học:</label>
+            <input type="text" id="new-course-code" class="form-control mono" placeholder="VD: INT3105" required>
+          </div>
+
+          <div class="form-group">
+            <label for="new-course-name" class="form-label required">Tên môn học:</label>
+            <input type="text" id="new-course-name" class="form-control" placeholder="VD: Lập trình Di động (Flutter)" required>
+          </div>
+
+          <div class="form-group">
+            <label for="new-course-credits" class="form-label required">Số tín chỉ (TC):</label>
+            <input type="number" id="new-course-credits" class="form-control mono" value="3" min="1" max="10" required>
+          </div>
+
+          <div class="form-group">
+            <label for="new-course-deadline" class="form-label required">Hạn nộp tiền môn này:</label>
+            <input type="date" id="new-course-deadline" class="form-control mono" value="2026-12-20" required>
+          </div>
+
+          <div class="form-group" style="align-self: flex-end;">
+            <button type="submit" class="btn btn-lime" style="width: 100%;">+ Thêm vào bảng kê khai</button>
+          </div>
+        </form>
+      </section>
+
+      <footer class="site-footer">
+        <span>Phân hệ Tra cứu Học phí & Học bổng © 2026</span>
+        <a href="scholarship.html">Chuyển sang Khu vực 2: Tra Cứu Học Bổng →</a>
+      </footer>
+    </div>
+
+    <!-- Script tính toán học phí -->
+    <script src="../js/tuition.js" defer></script>
+  </body>
+</html>
