@@ -1,0 +1,39 @@
+# PROMPT LOG - FINANCIAL HUB (PHÂN HỆ TRA CỨU HỌC PHÍ & HỌC BỔNG)
+Dự án cuối kỳ môn Thiết kế Web · Nhóm 4 thành viên
+
+---
+
+## 1. Mục tiêu & Tổng quan dự án
+- **Đề tài**: Phân hệ Tra cứu Học phí & Học bổng (Financial Hub).
+- **Tầm nhìn dài hạn**: Hệ thống quản lý tài chính sinh viên toàn diện, tích hợp ví điện tử và xét duyệt hồ sơ học bổng tự động.
+- **Yêu cầu kỹ thuật**:
+  - **HTML5**: Sử dụng các Input Types thích hợp (`number`, `date`, `checkbox`, `select`) để kê khai học phí.
+  - **CSS3**: Bố cục Cards hiển thị trực quan các mức học bổng theo GPA, responsive và hiệu ứng hover/active hiện đại.
+  - **JavaScript**: Bắt sự kiện `change` trên checkbox môn học, tính toán công nợ thời gian thực (realtime) sau khi trừ học bổng.
+
+---
+
+## 2. Nhật ký Prompt chi tiết (Prompt History)
+
+### Phase 1: Phân tích và Thiết kế Kiến trúc
+- **User Prompt**: "Bạn là 1 chuyên gia trong lĩnh vực UX/UI và lập trình thiết kế web. Đọc và phân tích tất cả cái thư mục trong folder này từ đó hãy làm cho tôi đề tài dưới đây: Phân hệ: Tra cứu Học phí & Học bổng (Financial Hub)..."
+- **Agent Reasoning**: 
+  - Đọc cấu trúc các bài thực hành trước (Bài 1, 5, 6, 7, 11). Nhận diện Design Token chuẩn: Dark mode (`#101513`), Mint (`#84d9bb`), Lime (`#c5ee75`), font chữ `Manrope` + `DM Mono`.
+  - Phân tách dự án thành 4 luồng module độc lập nhằm đáp ứng yêu cầu: "2 người không commit cùng 1 file" và phân công rõ cho nhóm 4 người.
+
+### Phase 2: Triển khai Cấu trúc HTML5 (Thành viên 1 & 2)
+- **Prompt thành viên 2**: "Viết trang `tuition.html` với form kê khai sinh viên dùng `<input type='date'>` cho hạn nộp, `<input type='number'>` cho đơn giá tín chỉ và phụ phí. Bảng môn học dùng checkbox `data-credits` cho từng môn."
+- **Output**: File `pages/tuition.html` chuẩn ngữ nghĩa HTML5, thẻ `table` với `thead`, `tbody`, `tfoot` và input attributes chặt chẽ (`min`, `step`, `required`).
+
+### Phase 3: Triển khai Thẻ Cards CSS3 (Thành viên 3)
+- **Prompt thành viên 3**: "Thiết kế thẻ Cards cho các mức học bổng Xuất sắc (100%), Giỏi (75%), Khá (50%), Khuyến khích (25%) trên `pages/scholarship.html` và viết toàn bộ CSS trong `css/style.css` với hiệu ứng viền phát sáng và badge emoji."
+- **Output**: Lưới `scholarship-grid`, hiệu ứng hover 3D nhẹ, class `.active` sáng màu vàng/xanh neon tương ứng từng mức học bổng.
+
+### Phase 4: Xử lý Logic JavaScript Realtime (Thành viên 4)
+- **Prompt thành viên 4**: "Viết file `js/calculator.js` lắng nghe sự kiện `change` trên các checkbox môn học. Khi người dùng tick hoặc bỏ tick, tính tổng tiền môn học, kiểm tra mức học bổng theo GPA, trừ học bổng và hiển thị số tiền công nợ còn lại ngay lập tức."
+- **Output**: Xử lý logic thời gian thực mượt mà, định dạng tiền tệ VNĐ chuẩn với `Intl.NumberFormat('vi-VN')`.
+
+### Phase 5: Tổng hợp Dashboard & Tích hợp Hệ thống (Thành viên 1)
+- **Prompt thành viên 1**: "Tạo trang chủ `index.html` điều hướng và trang `pages/dashboard.html` tổng hợp trạng thái tài chính sinh viên. Viết script `js/dashboard.js` đồng bộ dữ liệu."
+- **Output**: Hoàn thiện toàn bộ hệ sinh thái Financial Hub sẵn sàng cho buổi bảo vệ cuối kỳ.
+
