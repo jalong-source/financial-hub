@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Bảng Kê Khai Học Phí | Financial Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <!-- ═══ HEADER & STUDENT INFO (PRD KHU VỰC 1) ═══ -->
+      <header class="masthead">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <a href="../index.html" class="back-link">← CỔNG HUB</a>
+          <span class="course-label">FINANCIAL HUB · PHÂN HỆ KÊ KHAI</span>
+        </div>
+        <div class="user-badge">
+          <span class="badge-avatar">🎓</span>
+          <div class="badge-info">
+            <strong>Nguyễn Văn A</strong>
+            <small>MSSV: 2024001234 · Kỹ thuật Phần mềm</small>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ PAGE INTRO ═══ -->
+      <section class="exercise-head">
+        <p class="eyebrow">HTML5 INPUT TYPES & EVENT-DRIVEN UI</p>
+        <h1>Bảng Kê Khai <span>Học Phí</span></h1>
+        <p>Kê khai thông tin học phần bằng các kiểu dữ liệu Input chuẩn HTML5 (<code>number</code>, <code>date</code>, <code>checkbox</code>) và giả lập thêm học phần mới theo thời gian thực.</p>
+      </section>
+
+      <!-- ═══ KHU VỰC 1: THÔNG TIN SINH VIÊN & ĐIỀU KIỆN KÊ KHAI ═══ -->
+      <section class="workbench">
+        <h2>📝 Thông tin kê khai sinh viên</h2>
+        <form id="student-form" style="display: grid; gap: 14px;" onsubmit="return false;">
+          <div class="controls">
+            <div class="field">
+              <label for="student-id">Mã số sinh viên (10 số)</label>
+              <input type="text" id="student-id" placeholder="VD: 2024001234" value="2024001234" required pattern="[0-9]{10}" title="MSSV gồm đúng 10 chữ số">
+            </div>
+            <div class="field">
+              <label for="student-name">Họ và tên sinh viên</label>
+              <input type="text" id="student-name" placeholder="Nguyễn Văn A" value="Nguyễn Văn A" required>
+            </div>
+            <div class="field">
+              <label for="student-major">Ngành học</label>
+              <input type="text" id="student-major" value="Kỹ thuật Phần mềm (CNTT)" required>
+            </div>
+          </div>
+          <div class="controls">
+            <div class="field">
+              <label for="semester">Học kỳ kê khai</label>
+              <select id="semester" required>
+                <option value="HK1-2026" selected>Học kỳ 1 – 2026-2027</option>
+                <option value="HK2-2026">Học kỳ 2 – 2026-2027</option>
+                <option value="HK3-2026">Học kỳ hè – 2026-2027</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="due-date">Hạn nộp học phí dự kiến</label>
+              <input type="date" id="due-date" value="2027-01-15" required>
+            </div>
+            <div class="field">
+              <label for="credit-price">Đơn giá chuẩn / tín chỉ (VNĐ)</label>
+              <input type="number" id="credit-price" value="850000" min="100000" max="5000000" step="10000" required>
+            </div>
+            <div class="field">
+              <label for="extra-fee">Phí phụ thu (Bảo hiểm, CSVC...)</label>
+              <input type="number" id="extra-fee" value="350000" min="0" max="5000000" step="10000">
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- ═══ FORM THÊM HỌC PHẦN GIẢ LẬP (PRD YÊU CẦU ĐẶC BIỆT) ═══ -->
+      <section class="workbench" style="margin-top: 20px;">
+        <h2>➕ Thêm học phần giả lập mới (HTML5 Dynamic Inputs)</h2>
+        <form id="add-course-form" style="display: grid; gap: 14px;">
+          <div class="controls">
+            <div class="field" style="flex: 1 1 120px;">
+              <label for="new-course-code">Mã môn học</label>
+              <input type="text" id="new-course-code" placeholder="VD: AI401" required>
+            </div>
+            <div class="field" style="flex: 2 1 200px;">
+              <label for="new-course-name">Tên môn học</label>
+              <input type="text" id="new-course-name" placeholder="VD: Trí tuệ nhân tạo ứng dụng" required>
+            </div>
+            <div class="field" style="flex: 1 1 100px;">
+              <label for="new-course-credits">Số tín chỉ</label>
+              <input type="number" id="new-course-credits" min="1" max="10" value="3" required>
+            </div>
+            <div class="field" style="flex: 1 1 140px;">
+              <label for="new-course-price">Đơn giá riêng (VNĐ)</label>
+              <input type="number" id="new-course-price" placeholder="Mặc định theo chuẩn" min="100000" step="50000">
+            </div>
+            <div class="field" style="flex: 1 1 140px;">
+              <label for="new-course-deadline">Hạn đóng môn</label>
+              <input type="date" id="new-course-deadline" value="2027-01-20" required>
+            </div>
+            <button type="submit" id="btn-add-course" style="align-self: end;">+ Thêm học phần</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ═══ KHU VỰC 3: BẢNG KÊ KHAI MÔN HỌC ═══ -->
+      <section class="workbench" style="margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <h2 style="margin: 0;">📚 Danh sách môn học đăng ký (Mặc định 6 môn mẫu)</h2>
+          <small style="color: var(--muted); font-family: var(--mono); font-size: 0.78rem;">
+            Tick/bỏ tick để cập nhật học phí tức thì (sự kiện <code>change</code>)
+          </small>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="tuition-table" id="course-table">
+            <thead>
+              <tr>
+                <th style="width: 44px; text-align: center;">Chọn</th>
+                <th style="width: 85px;">Mã môn</th>
+                <th>Tên môn học</th>
+                <th style="width: 75px; text-align: center;">Tín chỉ</th>
+                <th class="money" style="width: 140px;">Đơn giá</th>
+                <th class="money" style="width: 150px;">Thành tiền</th>
+                <th style="width: 110px;">Hạn đóng</th>
+                <th style="width: 50px; text-align: center;">Xóa</th>
+              </tr>
+            </thead>
+            <tbody id="course-tbody">
+              <!-- Môn 1 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="3" data-price="" checked></td>
+                <td><code>CS101</code></td>
+                <td>Nhập môn lập trình</td>
+                <td style="text-align: center;">3</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">15/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+              <!-- Môn 2 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="3" data-price="" checked></td>
+                <td><code>CS201</code></td>
+                <td>Cấu trúc dữ liệu & Giải thuật</td>
+                <td style="text-align: center;">3</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">15/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+              <!-- Môn 3 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="2" data-price="" checked></td>
+                <td><code>WD301</code></td>
+                <td>Thiết kế Web (HTML5/CSS3/JS)</td>
+                <td style="text-align: center;">2</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">15/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+              <!-- Môn 4 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="3" data-price="" checked></td>
+                <td><code>DB201</code></td>
+                <td>Hệ quản trị Cơ sở dữ liệu</td>
+                <td style="text-align: center;">3</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">15/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+              <!-- Môn 5 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="2" data-price="" checked></td>
+                <td><code>MA101</code></td>
+                <td>Toán rời rạc ứng dụng</td>
+                <td style="text-align: center;">2</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">15/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+              <!-- Môn 6 -->
+              <tr>
+                <td style="text-align: center;"><input type="checkbox" class="course-cb" data-credits="3" data-price=""></td>
+                <td><code>EN201</code></td>
+                <td>Tiếng Anh chuyên ngành CNTT</td>
+                <td style="text-align: center;">3</td>
+                <td class="money unit-price">—</td>
+                <td class="money course-cost">—</td>
+                <td style="font-family: var(--mono); font-size: 0.8rem;">20/01/2027</td>
+                <td style="text-align: center;"><button type="button" class="btn-del-row" title="Xóa môn">×</button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="font-weight: 700; background: rgba(197, 238, 117, 0.05);">
+                <td colspan="3" style="text-align: right; padding-right: 14px;">TỔNG CỘNG ĐÃ CHỌN:</td>
+                <td style="text-align: center; color: var(--lime);" id="total-credits">0 TC</td>
+                <td></td>
+                <td class="money" style="color: var(--lime);" id="total-tuition">0 VNĐ</td>
+                <td colspan="2"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ BẢNG TỔNG KẾT THANH TOÁN (STICKY SUMMARY BOX THEO PRD) ═══ -->
+      <div class="summary-bar" id="summary-bar">
+        <div>
+          <div class="label">TỔNG HỌC PHÍ GỐC (CHƯA TRỪ HỌC BỔNG)</div>
+          <div class="label" style="margin-top: 4px;" id="summary-detail">Học phí môn chọn + Phí phụ thu</div>
+        </div>
+        <div class="total" id="grand-total">0 VNĐ</div>
+      </div>
+
+      <div class="prompt-box">
+        <strong>Yêu cầu PRD.md:</strong> Bảng kê khai học phí kết hợp HTML5 Form (<code>type="number"</code>, <code>type="date"</code>). Checkbox chọn/bỏ chọn kích hoạt sự kiện <code>change</code> tính toán lại toàn bộ học phí tức thì với định dạng tiền tệ Việt Nam (VNĐ).
+      </div>
+
+      <div class="exercise-nav">
+        <a href="../index.html">← Trang chủ Portal</a>
+        <a href="scholarship.html">Khu vực 2: Tra cứu Học bổng →</a>
+      </div>
+
+      <footer class="site-footer">
+        <span>STUDENT FINANCIAL HUB © 2026 — Thành viên 2 (Frontend Dev) phụ trách</span>
+        <a href="calculator.html">Chuyển sang Bảng tính công nợ ↗</a>
+      </footer>
+    </main>
+
+    <script src="../js/tuition.js"></script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+====================================================================================================
+KẾ HOẠCH PHÂN CÔNG, PROMPT KỸ THUẬT VÀ LỆNH GIT CHO NHÓM 4 NGƯỜI
+ĐỀ TÀI: PHÂN HỆ TRA CỨU HỌC PHÍ & HỌC BỔNG (FINANCIAL HUB)
+MÔN: THIẾT KẾ WEB · HỌC PHẦN CUỐI KỲ
+====================================================================================================
+
+QUY TẮC BẮT BUỘC TỪ GIẢNG VIÊN & DỰ ÁN:
+1. 100% cả 4 thành viên đều phải có lượt commit ghi nhận trên GitHub.
+2. Tuyệt đối KHÔNG có 2 thành viên nào cùng commit/sửa trên cùng 1 file.
+3. Mỗi lần commit phải diễn ra realtime.
+4. BẮT BUỘC 100% COMMIT MESSAGE PHẢI VIẾT BẰNG TIẾNG VIỆT rõ nghĩa theo từng phân hệ.
+
+----------------------------------------------------------------------------------------------------
+QUY TRÌNH THỰC HIỆN CHUẨN KỸ THUẬT WEB (5 GIAI ĐOẠN TUẦN TỰ):
+  GIAI ĐOẠN 1: Thành viên 1 khởi tạo khung nền tảng dự án (Scaffolding & Docs).
+  GIAI ĐOẠN 2: Thành viên 2 dựng khung nhập liệu Bảng kê khai bằng HTML5 Form (Data Entry).
+  GIAI ĐOẠN 3: Thành viên 3 xây dựng Design System CSS3 & Thẻ Cards Học bổng (Styling & Visual Cards).
+  GIAI ĐOẠN 4: Thành viên 4 lập trình tính toán công nợ và bắt sự kiện checkbox realtime (Core Business Logic).
+  GIAI ĐOẠN 5: Thành viên 1 tích hợp toàn bộ hệ thống vào Dashboard và nghiệm thu (Integration & Final Review).
+----------------------------------------------------------------------------------------------------
+
+====================================================================================================
+BƯỚC 1: THÀNH VIÊN 1 (TRƯỞNG NHÓM - TEAM LEAD)
+Vai trò: Khởi tạo Repository, cấu trúc dự án và cổng điều hướng
+====================================================================================================
+1. Tệp độc quyền phụ trách:
+   - index.html (Trang Portal chính điều hướng toàn hệ thống)
+   - README.md (Báo cáo đồ án, bảng phân công nhiệm vụ và cam kết không trùng file)
+
+2. Prompt mẫu dùng cho AI / Viết code:
+   "Bạn là Team Lead và Kiến trúc sư hệ thống môn Thiết kế Web. Hãy khởi tạo cấu trúc thư mục dự án Financial Hub gồm assets/, css/, js/, pages/. Viết file index.html chuẩn ngữ nghĩa HTML5 đóng vai trò Cổng thông tin (Portal Hub) dẫn tới 4 phân hệ chức năng bằng các khối Card điều hướng. Sử dụng bảng mã màu Dark Theme (#101513, #84d9bb, #c5ee75, font Manrope). Tạo file README.md ghi rõ quy chế commit của giảng viên: 4 thành viên độc lập, cam kết không sửa chung bất kỳ file nào để tránh conflict và đảm bảo tính minh bạch."
+
+3. Lệnh Git chạy trên máy Thành viên 1 (Lần 1 - Khởi tạo):
+   cd "c:\Users\phamt\Downloads\Final exam\FinancialHub"
+   git init
+   git config user.name "ThanhVien1-Lead"
+   git config user.email "lead_member1@example.com"
+   git add index.html README.md
+   git commit -m "feat(core): initialize project architecture, hub navigation, and documentation"
+   git branch -M main
+   git remote add origin <LINK_GITHUB_REPO_CUA_NHOM>
+   git push -u origin main
+
+
+====================================================================================================
+BƯỚC 2: THÀNH VIÊN 2 (LẬP TRÌNH VIÊN FRONTEND FORM)
+Vai trò: Xây dựng Bảng Kê Khai Học Phí chuẩn HTML5 Input Types
+====================================================================================================
+1. Tệp độc quyền phụ trách:
+   - pages/tuition.html (Giao diện Bảng kê khai học phí)
+   - js/tuition.js (Script tính toán số tín chỉ và học phí ban đầu)
+
+2. Prompt mẫu dùng cho AI / Viết code:
+   "Hãy viết trang pages/tuition.html và script js/tuition.js thực hiện yêu cầu đề bài: Giả lập bảng kê khai học phí bằng các Input types phù hợp trong HTML5. Form gồm input text cho MSSV (ràng buộc pattern 10 chữ số), input date cho hạn nộp học phí, input number cho đơn giá tín chỉ (min, max, step) và phí phụ thu. Bảng môn học dùng thẻ table ngữ nghĩa với tối thiểu 7 môn học kèm checkbox data-credits. Viết file js/tuition.js lắng nghe sự kiện change và input để tính tổng tín chỉ và học phí tức thời, định dạng tiền tệ VNĐ."
+
+3. Lệnh Git chạy trên máy Thành viên 2 (Sau khi TV1 đã push):
+   cd "c:\Users\phamt\Downloads\Final exam\FinancialHub"
+   git config user.name "ThanhVien2-Frontend"
+   git config user.email "frontend_member2@example.com"
+   git pull origin main
+   git add pages/tuition.html js/tuition.js
+   git commit -m "feat(hoc-phi): hoan thien bang ke khai hoc phi HTML5 va form them mon hoc moi"
+   git push origin main
+
+
+====================================================================================================
+BƯỚC 3: THÀNH VIÊN 3 (CHUYÊN VIÊN UI/UX & CSS3)
+Vai trò: Thiết kế Design System toàn cục và Thẻ Cards Học Bổng
+====================================================================================================
+1. Tệp độc quyền phụ trách:
+   - css/style.css (Design System, biến màu CSS :root, responsive, typography)
+   - pages/scholarship.html (Giao diện tra cứu học bổng dạng thẻ Cards)
+   - js/scholarship.js (Script tương tác và kích hoạt thẻ card theo điểm GPA)
+
+2. Prompt mẫu dùng cho AI / Viết code:
+   "Hãy thiết kế hệ thống CSS3 hoàn chỉnh trong file css/style.css cho toàn bộ dự án theo phong cách Dark Mode chuyên nghiệp. Xây dựng trang pages/scholarship.html và script js/scholarship.js giải quyết yêu cầu: Thiết kế giao diện dạng các Thẻ (Cards) hiển thị mức học bổng đạt được dựa trên các điều kiện điểm số GPA (Xuất sắc >= 3.60: 100%, Giỏi >= 3.20: 75%, Khá >= 2.50: 50%, Khuyến khích >= 2.00: 25%). Sử dụng CSS Grid, hiệu ứng viền neon, hover nhấc 3D và class .active phát sáng đúng thẻ khi người dùng nhập GPA."
+
+3. Lệnh Git chạy trên máy Thành viên 3 (Sau khi TV2 đã push):
+   cd "c:\Users\phamt\Downloads\Final exam\FinancialHub"
+   git config user.name "ThanhVien3-Designer"
+   git config user.email "designer_member3@example.com"
+   git pull origin main
+   git add css/style.css pages/scholarship.html js/scholarship.js
+   git commit -m "feat(giao-dien): thiet ke dark mode CSS3 va giao dien the hoc bong 3 muc GPA va DRL"
+   git push origin main
+
+
+====================================================================================================
+BƯỚC 4: THÀNH VIÊN 4 (LẬP TRÌNH VIÊN JAVASCRIPT LOGIC)
+Vai trò: Lập trình tính toán công nợ và bắt sự kiện Checkbox Realtime
+====================================================================================================
+1. Tệp độc quyền phụ trách:
+   - pages/calculator.html (Giao diện tính toán công nợ học phí)
+   - js/calculator.js (Xử lý sự kiện change trên checkbox, thuật toán trừ học bổng)
+   - prompt.log (Nhật ký lưu trữ lịch sử prompt kỹ thuật của đề tài)
+
+2. Prompt mẫu dùng cho AI / Viết code:
+   "Hãy lập trình trang pages/calculator.html và file js/calculator.js thực hiện yêu cầu trọng tâm của đề tài: Viết logic tính toán học phí còn nợ sau khi trừ đi học bổng. Sử dụng sự kiện 'change' trên các checkbox môn học để cập nhật tổng số tiền cần đóng ngay lập tức. Công thức: Nợ còn lại = (Tổng học phí các môn được tick - Mức miễn giảm học bổng theo GPA & ĐRL) + Phí phụ thu. Tích hợp thanh toán ví điện tử sinh viên. Đồng thời hoàn thiện file prompt.log ghi lại quá trình kỹ thuật."
+
+3. Lệnh Git chạy trên máy Thành viên 4 (Sau khi TV3 đã push):
+   cd "c:\Users\phamt\Downloads\Final exam\FinancialHub"
+   git config user.name "ThanhVien4-Dev"
+   git config user.email "logicdev_member4@example.com"
+   git pull origin main
+   git add pages/calculator.html js/calculator.js prompt.log
+   git commit -m "feat(cong-no): xu ly tinh cong no hoc phi realtime, vi sinh vien va prompt log"
+   git push origin main
+
+
+====================================================================================================
+BƯỚC 5: THÀNH VIÊN 1 (TRƯỞNG NHÓM - CHỐT HẠ DỰ ÁN)
+Vai trò: Tích hợp Dashboard tổng hợp toàn bộ thông số và nghiệm thu
+====================================================================================================
+1. Tệp độc quyền phụ trách:
+   - pages/dashboard.html (Trang tổng hợp toàn bộ hồ sơ, học phí, học bổng và công nợ)
+   - js/dashboard.js (Script liên kết dữ liệu tổng thể hệ sinh thái)
+
+2. Prompt mẫu dùng cho AI / Viết code:
+   "Hãy viết trang pages/dashboard.html và file js/dashboard.js đóng vai trò tổng hợp (Dashboard) toàn bộ hệ sinh thái Financial Hub. Trang này liên kết cả 3 yếu tố: Hồ sơ sinh viên & Bảng môn học (từ phân hệ của TV2), Thẻ học bổng trực quan (từ phân hệ của TV3), và Bảng tính công nợ realtime (từ phân hệ của TV4). Khi người dùng đổi GPA hoặc tick checkbox môn học trên Dashboard, hệ thống tự động tính lại tổng tín chỉ, học bổng và công nợ ngay lập tức mà không cần chuyển trang."
+
+3. Lệnh Git chạy trên máy Thành viên 1 (Lần 2 - Kết thúc dự án):
+   cd "c:\Users\phamt\Downloads\Final exam\FinancialHub"
+   git pull origin main
+   git add pages/dashboard.html js/dashboard.js
+   git commit -m "feat(dashboard): tich hop toan dien ho so hoc phi, hoc bong va vi sinh vien"
+   git push origin main
+
+
+====================================================================================================
+TỔNG KẾT BẢNG KIỂM TRA CHO BUỔI BẢO VỆ CUỐI KỲ:
+- Mở mục 'Insights > Network' trên GitHub: Cả 4 thành viên đều xuất hiện commit theo dòng thời gian sạch sẽ, không có merge conflict.
+- Không có bất kỳ file nào có 2 người cùng chỉnh sửa.
+- Sẵn sàng demo trực tiếp trên trình duyệt tính năng HTML5, Thẻ Cards CSS3 và Logic sự kiện change JavaScript.
+====================================================================================================

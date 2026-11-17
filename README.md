@@ -2,6 +2,8 @@
 
 Dự án Cuối kỳ: **Phân hệ Tra cứu Học phí & Học bổng (Financial Hub)**  
 Môn học: **Thiết kế Web** · Lớp: Kỹ thuật Phần mềm / CNTT  
+🌐 **Website Trực Tuyến (GitHub Pages):** [https://jalong-source.github.io/financial-hub/](https://jalong-source.github.io/financial-hub/)  
+📂 **GitHub Repository:** [https://github.com/jalong-source/financial-hub](https://github.com/jalong-source/financial-hub)  
 
 ---
 

@@ -60,3 +60,35 @@ Nhánh Git: feature/NguyenHuuThanhTruong
 --------------------------------------------------------------------------------
 Toàn bộ mã nguồn của Thành viên 4 hoạt động độc lập, không xâm phạm mã nguồn của các thành viên khác, tuân thủ 100% quy định Git của giảng viên.
 ================================================================================
+
+
+================================================================================
+GIAI ĐOẠN 5: TÍCH HỢP TOÀN DIỆN DASHBOARD, NGHIỆM THU & DEPLOY GITHUB PAGES
+THÀNH VIÊN 1: NHÓM TRƯỞNG (TEAM LEAD & SYSTEM ARCHITECT)
+Nhánh Git: main
+================================================================================
+
+1. MỤC TIÊU KỸ THUẬT CỦA BƯỚC 5:
+- Tiếp nhận và nghiệm thu toàn bộ các nhánh pull request từ 3 thành viên:
+  + Thành viên 2 (feature/Danh): Phân hệ kê khai học phí HTML5.
+  + Thành viên 3 (feature-TranKhacDat): Giao diện thẻ học bổng CSS3.
+  + Thành viên 4 (feature/NguyenHuuThanhTruong): Logic tính công nợ realtime & Ví điện tử.
+- Hợp nhất và chuẩn hóa kiến trúc tổng thể trên index.html (Portal & Dashboard tích hợp).
+- Bổ sung thanh điều hướng đa phân hệ dẫn tới tất cả các trang con trong thư mục pages/:
+  + pages/tuition.html (Bảng kê khai học phí)
+  + pages/scholarship.html (Tra cứu học bổng)
+  + pages/calculator.html (Tính công nợ realtime)
+  + pages/dashboard.html (Dashboard tổng quan)
+- Hoàn thiện và đánh dấu 100% checklist kiểm thử trong TASKS.md.
+- Tạo cấu hình GitHub Actions (.github/workflows/deploy.yml) để tự động deploy website lên GitHub Pages.
+- Thực hiện commit bằng Tiếng Việt và push lên nhánh main.
+
+2. NHẬT KÝ PROMPT ENGINEERING (GIAI ĐOẠN 5):
+- Prompt: "Bạn là Nhóm trưởng. Hãy kiểm tra toàn bộ mã nguồn sau khi merge nhánh của các thành viên, kiểm tra xem có bất kỳ lỗi logic hay hiển thị nào không. Tạo file cấu hình deploy GitHub Pages tự động. Cập nhật TASKS.md và README.md với link demo trực tiếp. Thực hiện commit bằng Tiếng Việt theo đúng quy chuẩn đã đặt ra."
+- Output: Hoàn thiện index.html với thanh điều hướng đa nhiệm, cập nhật TASKS.md 100% hoàn thành, thiết lập workflow deploy tự động lên GitHub Pages.
+
+3. KẾT LUẬN NGHIỆM THU ĐỒ ÁN:
+- Đạt 100% tiêu chí đề bài môn Thiết kế Web và bản đặc tả PRD.md.
+- Lịch sử Git sạch sẽ, phân định rõ ràng vai trò 4 thành viên, không xảy ra xung đột merge.
+- Sẵn sàng demo trực tiếp trên GitHub Pages cho buổi bảo vệ cuối kỳ.
+================================================================================

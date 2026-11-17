@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Dashboard Tổng Quan | Financial Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <a href="../index.html" class="back-link">← QUAY LẠI</a>
+        <span class="course-label">FINANCIAL HUB · DASHBOARD</span>
+      </header>
+
+      <section class="exercise-head">
+        <p class="eyebrow">TỔNG HỢP · FULL INTEGRATION</p>
+        <h1>Dashboard <span>Tổng Quan</span></h1>
+        <p>Trang tổng hợp toàn bộ thông tin tài chính sinh viên — nhập thông tin một lần, xem kết quả mọi nơi.</p>
+      </section>
+
+      <!-- ═══ STUDENT PROFILE ═══ -->
+      <section class="workbench">
+        <h2>👤 Hồ sơ sinh viên</h2>
+        <form id="dashboard-form" style="display: grid; gap: 14px;">
+          <div class="controls">
+            <div class="field">
+              <label for="d-name">Họ và tên</label>
+              <input type="text" id="d-name" placeholder="Nguyễn Văn A" value="Nguyễn Văn A">
+            </div>
+            <div class="field">
+              <label for="d-id">MSSV</label>
+              <input type="text" id="d-id" placeholder="2024001234" value="2024001234">
+            </div>
+            <div class="field">
+              <label for="d-gpa">GPA</label>
+              <input type="number" id="d-gpa" min="0" max="4" step="0.01" value="3.25">
+            </div>
+          </div>
+          <div class="controls">
+            <div class="field">
+              <label for="d-semester">Học kỳ</label>
+              <select id="d-semester">
+                <option value="HK1-2026">HK1 – 2026-2027</option>
+                <option value="HK2-2026" selected>HK2 – 2026-2027</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="d-credit-price">Đơn giá / tín chỉ</label>
+              <input type="number" id="d-credit-price" value="850000" min="100000" step="50000">
+            </div>
+            <button type="button" id="btn-dashboard-update" style="align-self: end;">Cập nhật Dashboard</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ═══ STATS OVERVIEW ═══ -->
+      <div class="stats-row" style="margin-top: 20px;">
+        <div class="stat-card">
+          <div class="stat-label">Tổng tín chỉ đăng ký</div>
+          <div class="stat-value lime" id="d-total-credits">16</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Tổng học phí</div>
+          <div class="stat-value mint" id="d-total-tuition">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Mức học bổng</div>
+          <div class="stat-value gold" id="d-scholarship-level">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Số tiền còn nợ</div>
+          <div class="stat-value error" id="d-debt">—</div>
+        </div>
+      </div>
+
+      <!-- ═══ COURSE LIST ═══ -->
+      <section class="workbench" style="margin-top: 20px;">
+        <h2>📚 Môn học đã đăng ký</h2>
+        <div style="overflow-x: auto;">
+          <table class="tuition-table" id="d-course-table">
+            <thead>
+              <tr>
+                <th style="width:40px">✓</th>
+                <th>Mã MH</th>
+                <th>Tên môn học</th>
+                <th style="width:55px">TC</th>
+                <th class="money" style="width:130px">Thành tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="3" checked></td><td>CS101</td><td>Nhập môn lập trình</td><td>3</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="3" checked></td><td>CS201</td><td>Cấu trúc dữ liệu & Giải thuật</td><td>3</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="2" checked></td><td>WD301</td><td>Thiết kế Web</td><td>2</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="3" checked></td><td>DB201</td><td>Cơ sở dữ liệu</td><td>3</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="2" checked></td><td>MA101</td><td>Toán rời rạc</td><td>2</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="3"></td><td>EN201</td><td>Tiếng Anh chuyên ngành</td><td>3</td><td class="money d-cost">—</td></tr>
+              <tr><td><input type="checkbox" class="d-cb" data-credits="2"></td><td>PE101</td><td>Giáo dục thể chất</td><td>2</td><td class="money d-cost">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ SCHOLARSHIP CARDS (mini) ═══ -->
+      <section class="workbench" style="margin-top: 20px;">
+        <h2>🏆 Mức học bổng hiện tại</h2>
+        <div class="scholarship-grid" id="d-scholarship-grid">
+          <div class="scholarship-card gold" data-min-gpa="3.60" data-percent="100" id="d-card-xs">
+            <div class="card-emoji">🥇</div>
+            <div class="card-title">Xuất sắc</div>
+            <div class="card-gpa">GPA ≥ 3.60</div>
+            <div class="card-percent">100%</div>
+          </div>
+          <div class="scholarship-card silver" data-min-gpa="3.20" data-percent="75" id="d-card-g">
+            <div class="card-emoji">🥈</div>
+            <div class="card-title">Giỏi</div>
+            <div class="card-gpa">GPA ≥ 3.20</div>
+            <div class="card-percent">75%</div>
+          </div>
+          <div class="scholarship-card bronze" data-min-gpa="2.50" data-percent="50" id="d-card-k">
+            <div class="card-emoji">🥉</div>
+            <div class="card-title">Khá</div>
+            <div class="card-gpa">GPA ≥ 2.50</div>
+            <div class="card-percent">50%</div>
+          </div>
+          <div class="scholarship-card" data-min-gpa="2.00" data-percent="25" id="d-card-kk">
+            <div class="card-emoji">⭐</div>
+            <div class="card-title">Khuyến khích</div>
+            <div class="card-gpa">GPA ≥ 2.00</div>
+            <div class="card-percent">25%</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ FINAL SUMMARY ═══ -->
+      <div class="summary-bar debt" id="d-summary" style="margin-top: 20px;">
+        <div>
+          <div class="label">TỔNG CÔNG NỢ CÒN LẠI</div>
+          <div class="label" style="margin-top:4px;" id="d-formula">—</div>
+        </div>
+        <div class="total" id="d-grand-total">0 ₫</div>
+      </div>
+
+      <div class="exercise-nav">
+        <a href="calculator.html">← Tính công nợ</a>
+        <a href="../index.html">Trang chủ</a>
+      </div>
+
+      <footer class="site-footer">
+        <span>FINANCIAL HUB © 2026 — Thành viên 1 (Team Lead) phụ trách trang này</span>
+      </footer>
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
+

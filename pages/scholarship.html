@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101513">
+    <title>Tra Cứu Học Bổng | Financial Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <a href="../index.html" class="back-link">← QUAY LẠI</a>
+        <span class="course-label">FINANCIAL HUB · HỌC BỔNG</span>
+      </header>
+
+      <section class="exercise-head">
+        <p class="eyebrow">CSS3 · CARDS LAYOUT</p>
+        <h1>Tra Cứu <span>Học Bổng</span></h1>
+        <p>Nhập điểm GPA để xem mức học bổng đạt được — giao diện dạng thẻ Cards hiển thị trực quan từng mức.</p>
+      </section>
+
+      <!-- ═══ GPA INPUT ═══ -->
+      <section class="workbench">
+        <h2>🎓 Nhập điểm trung bình tích lũy (GPA)</h2>
+        <div class="controls">
+          <div class="field">
+            <label for="gpa-input">Điểm GPA (thang 4.0)</label>
+            <input type="number" id="gpa-input" min="0" max="4" step="0.01" placeholder="VD: 3.65" value="">
+          </div>
+          <div class="field">
+            <label for="total-tuition">Tổng học phí học kỳ (VNĐ)</label>
+            <input type="number" id="total-tuition" min="0" step="100000" value="11050000" placeholder="11,050,000">
+          </div>
+          <button type="button" id="btn-check-scholarship">Kiểm tra học bổng</button>
+        </div>
+        <div class="result" id="gpa-result"></div>
+      </section>
+
+      <!-- ═══ SCHOLARSHIP CARDS ═══ -->
+      <section class="workbench" style="margin-top: 20px;">
+        <h2>🏆 Các mức học bổng theo điểm GPA</h2>
+        <div class="scholarship-grid" id="scholarship-grid">
+
+          <!-- Card 1: Xuất sắc -->
+          <div class="scholarship-card gold" data-min-gpa="3.60" data-percent="100" id="card-xuat-sac">
+            <div class="card-emoji">🥇</div>
+            <div class="card-title">Học bổng Xuất sắc</div>
+            <div class="card-gpa">GPA ≥ 3.60</div>
+            <div class="card-percent">100%</div>
+            <div class="card-amount">Miễn toàn bộ học phí</div>
+          </div>
+
+          <!-- Card 2: Giỏi -->
+          <div class="scholarship-card silver" data-min-gpa="3.20" data-percent="75" id="card-gioi">
+            <div class="card-emoji">🥈</div>
+            <div class="card-title">Học bổng Giỏi</div>
+            <div class="card-gpa">GPA ≥ 3.20</div>
+            <div class="card-percent">75%</div>
+            <div class="card-amount">Giảm 75% học phí</div>
+          </div>
+
+          <!-- Card 3: Khá -->
+          <div class="scholarship-card bronze" data-min-gpa="2.50" data-percent="50" id="card-kha">
+            <div class="card-emoji">🥉</div>
+            <div class="card-title">Học bổng Khá</div>
+            <div class="card-gpa">GPA ≥ 2.50</div>
+            <div class="card-percent">50%</div>
+            <div class="card-amount">Giảm 50% học phí</div>
+          </div>
+
+          <!-- Card 4: Khuyến khích -->
+          <div class="scholarship-card" data-min-gpa="2.00" data-percent="25" id="card-kk">
+            <div class="card-emoji">⭐</div>
+            <div class="card-title">Học bổng Khuyến khích</div>
+            <div class="card-gpa">GPA ≥ 2.00</div>
+            <div class="card-percent">25%</div>
+            <div class="card-amount">Giảm 25% học phí</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══ SCHOLARSHIP RESULT ═══ -->
+      <div class="summary-bar" id="scholarship-summary" style="margin-top: 20px; display: none;">
+        <div>
+          <div class="label">SỐ TIỀN HỌC BỔNG ĐƯỢC NHẬN</div>
+          <div class="label" style="margin-top:4px;" id="scholarship-detail">—</div>
+        </div>
+        <div class="total" id="scholarship-amount">0 ₫</div>
+      </div>
+
+      <div class="prompt-box">
+        <strong>Yêu cầu đề tài:</strong> Thiết kế giao diện dạng các thẻ (<code>Cards</code>) hiển thị mức học bổng đạt được dựa trên các điều kiện điểm số. Card tương ứng sẽ sáng lên (active) khi GPA đủ điều kiện.
+      </div>
+
+      <div class="exercise-nav">
+        <a href="tuition.html">← Bảng kê học phí</a>
+        <a href="calculator.html">Tính công nợ →</a>
+      </div>
+
+      <footer class="site-footer">
+        <span>FINANCIAL HUB © 2026 — Thành viên 3 phụ trách trang này</span>
+      </footer>
+    </main>
+
+    <script src="../js/scholarship.js"></script>
+  </body>
+</html>
+
