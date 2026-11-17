@@ -11,7 +11,7 @@ Phân hệ: Tra cứu Học phí & Học bổng (Financial Hub) · Môn Thiết 
 - [x] Xây dựng trang Cổng điều hướng (`index.html`) chuẩn ngữ nghĩa HTML5.
 - [x] Soạn thảo báo cáo phân công độc quyền 4 thành viên trong `README.md`.
 - [x] Khởi tạo bảng kiểm tra tiến độ `TASKS.md`.
-- [ ] Khởi tạo Git repository và đẩy commit Bước 1 lên GitHub.
+- [x] Khởi tạo Git repository và đẩy commit Bước 1 lên GitHub.
 
 ### Giai đoạn 2: Bảng Kê Khai Học Phí & Form HTML5 (Thành viên 2 - Frontend Dev)
 - [ ] Xây dựng giao diện `pages/tuition.html` với cấu trúc ngữ nghĩa HTML5.
@@ -32,12 +32,13 @@ Phân hệ: Tra cứu Học phí & Học bổng (Financial Hub) · Môn Thiết 
 - [ ] Đẩy commit Bước 3 lên GitHub với tài khoản Thành viên 3.
 
 ### Giai đoạn 4: Lập trình Logic JS & Bắt Sự kiện Realtime (Thành viên 4 - JS Developer)
-- [ ] Xây dựng giao diện `pages/calculator.html` tính công nợ thời gian thực.
-- [ ] Viết script `js/calculator.js` lắng nghe sự kiện `change` trên checkbox môn học.
-- [ ] Công thức tính công nợ tự động trừ mức học bổng đạt được theo GPA & ĐRL.
-- [ ] Tích hợp Modal "Thanh toán qua Ví sinh viên" giả lập và cập nhật số dư ví.
-- [ ] Hoàn thiện tài liệu nhật ký kỹ thuật AI Prompt Log (`prompt.log`).
-- [ ] Đẩy commit Bước 4 lên GitHub với tài khoản Thành viên 4.
+- [x] Xây dựng giao diện `pages/calculator.html` tính công nợ thời gian thực.
+- [x] Viết script `js/calculator.js` lắng nghe sự kiện `change` trên checkbox môn học.
+- [x] Công thức tính công nợ tự động trừ mức học bổng đạt được theo GPA & ĐRL.
+- [x] Tích hợp Modal "Thanh toán qua Ví sinh viên" giả lập và cập nhật số dư ví.
+- [x] Hoàn thiện tài liệu nhật ký kỹ thuật AI Prompt Log (`prompt.log`).
+- [x] Đẩy commit Bước 4 lên GitHub với tài khoản Thành viên 4.
+- [x] Chuẩn hóa kiến trúc tách biệt: `css/reset.css`, `css/variables.css`, `css/style.css` và `js/data.js`, `js/logic.js`, `js/main.js`.
 
 ### Giai đoạn 5: Tích hợp Toàn diện Dashboard & Nghiệm thu (Thành viên 1 - Team Lead)
 - [ ] Xây dựng trang tích hợp `pages/dashboard.html` liên kết cả 3 phân hệ.

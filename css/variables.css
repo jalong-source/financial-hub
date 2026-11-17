@@ -1,0 +1,64 @@
+/**
+ * ==============================================================================
+ * FINANCIAL HUB - DESIGN TOKENS & CSS VARIABLES
+ * File: css/variables.css
+ * Quản lý toàn bộ bảng màu, typography, khoảng cách, bo góc và bóng đổ
+ * ==============================================================================
+ */
+
+:root {
+  /* Bảng màu chính - Dark Theme */
+  --color-bg-body: #101513;
+  --color-bg-surface: #171f1b;
+  --color-bg-card: #1e2823;
+  --color-bg-card-hover: #26332d;
+  --color-bg-input: #141c18;
+
+  /* Màu nhấn (Brand Accent) */
+  --color-mint: #84d9bb;
+  --color-mint-dim: rgba(132, 217, 187, 0.15);
+  --color-mint-glow: rgba(132, 217, 187, 0.35);
+  
+  --color-lime: #c5ee75;
+  --color-lime-dim: rgba(197, 238, 117, 0.15);
+  
+  --color-amber: #f59e0b;
+  --color-amber-dim: rgba(245, 158, 11, 0.15);
+  
+  --color-danger: #ff6b6b;
+  --color-danger-dim: rgba(255, 107, 107, 0.15);
+
+  /* Màu chữ */
+  --color-text-main: #e6ede9;
+  --color-text-dim: #9aa8a1;
+  --color-text-muted: #64756c;
+  --color-text-white: #ffffff;
+
+  /* Đường viền */
+  --color-border: rgba(132, 217, 187, 0.16);
+  --color-border-hover: rgba(132, 217, 187, 0.45);
+  --color-border-active: #84d9bb;
+
+  /* Typography */
+  --font-family-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'DM Mono', monospace;
+
+  /* Bo góc (Border Radius) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-pill: 9999px;
+
+  /* Bóng đổ (Shadow Levels) */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-neon-mint: 0 0 20px rgba(132, 217, 187, 0.25);
+  --shadow-neon-lime: 0 0 20px rgba(197, 238, 117, 0.25);
+
+  /* Hiệu ứng chuyển cảnh (Transitions) */
+  --transition-fast: all 0.15s ease;
+  --transition-normal: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
