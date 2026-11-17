@@ -92,3 +92,25 @@ Nhánh Git: main
 - Lịch sử Git sạch sẽ, phân định rõ ràng vai trò 4 thành viên, không xảy ra xung đột merge.
 - Sẵn sàng demo trực tiếp trên GitHub Pages cho buổi bảo vệ cuối kỳ.
 ================================================================================
+
+================================================================================
+NHẬT KÝ KỸ THUẬT: ĐỒNG BỘ DESIGN SYSTEM & TỐI ƯU GIAO DIỆN GITHUB PAGES
+Thời gian: 2026-11-17
+Người thực hiện: Thành viên 1 (Nhóm trưởng & Senior UI/UX Architect)
+Vai trò: Senior UI/UX Designer & Frontend Architect
+
+1. MỤC TIÊU VÀ NGUYÊN NHÂN:
+- Sau khi hợp nhất các nhánh của thành viên, phát hiện lỗi giao diện trên GitHub Pages do lệch tên class CSS giữa index.html và 4 trang con (pages/*.html).
+- Đồng thời trang calculator.html còn chứa khối <style> inline, chưa tuân thủ quy chuẩn tách biệt CSS của đồ án.
+- Bố cục và thẩm mỹ cần được nâng cấp chuẩn Fintech Dark Theme: Neon Mint/Lime Glow, kính mờ Glassmorphism, thanh điều hướng Pill-tabs đồng bộ.
+
+2. CÁC NỘI DUNG ĐÃ XỬ LÝ:
+- css/style.css: Bổ sung hơn 1.200 dòng CSS chuẩn hóa toàn bộ các class của 4 trang con (.shell, .masthead, .user-badge, .exercise-head, .workbench, .controls, .field, .stats-row, .stat-card, .scholarship-grid, .scholarship-card.active, .summary-bar, .calc-container, .calc-grid, .panel, .modal-backdrop, .toast, .exercise-nav, .site-footer, .prompt-box, .subpage-nav).
+- Tối ưu thẩm mỹ Fintech:
+  + Thẻ học bổng: Chia lưới cân đối, hiệu ứng smooth transition, active viền neon mint/lime phát sáng kèm badge "✓ Đang áp dụng", inactive làm mờ opacity 0.65 tạo tương phản thị giác.
+  + Form nhập liệu: Đồng bộ chiều cao 44px, nền tối #141c18, focus viền neon mint, color-scheme: dark cho date/number inputs.
+  + Bảng môn học & Checkbox: Padding 14px 16px, highlight dòng được chọn với nền mint mờ (rgba(132, 217, 187, 0.08)), cột tiền tệ DM Mono căn phải.
+  + Thanh điều hướng: Chèn thanh pill-tabs (<nav class="subpage-nav">) đồng bộ 100% trên cả 4 trang con với trạng thái active trực quan.
+- Dọn sạch pages/calculator.html: Chuyển toàn bộ 645 dòng CSS inline sang css/style.css.
+- Kiểm tra toàn bộ đường dẫn tương đối (href/src) và cấu hình GitHub Actions deploy.yml, đảm bảo 0 link chết và deploy mượt mà trên GitHub Pages.
+================================================================================
